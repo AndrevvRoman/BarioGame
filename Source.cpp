@@ -1,35 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <string>
 #include <iostream>
+#include "map.h"
 
 using namespace sf;
 
 
 float ofsetX = 0, ofsetY = 0;
-int ground = 650;
-const int W = 73, H = 18,sb = 20;
-String map[] =
-{
-	"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                   BBBB     BBBBBBBBBBBBBBBBBBBB      B",
-	"B                                  BBBBB                               B",
-	"BBBB                              BBBBBB                               B",
-	"B                                BBBBBBB                               B",
-	"B                               BBBBBBBB                               B",
-	"B                              BBBBBBBBB                               B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                 S                                    B",
-	"B                                                                      B",
-	"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-};
+
 
 class PLAYER
 {
@@ -74,6 +52,7 @@ public:
 		if (currnetFrame > 2) currnetFrame = 0;
 
 		if (dx < 0) sprite.setTextureRect(IntRect(19 + (16 * int(currnetFrame)), 0, 15, 21));
+		if (dx == 0) sprite.setTextureRect(IntRect(19 + 15, 0, - 15, 21));
 		if (dx > 0) sprite.setTextureRect(IntRect(19 + (16 * int(currnetFrame)) + 15, 0, -15, 21));
 		if (dy < 0 && onGround == false) sprite.setTextureRect(IntRect(67, 0, 16, 21));
 		if (dy < 0 && onGround == false && Keyboard::isKeyPressed(Keyboard::Right)) sprite.setTextureRect(IntRect(67+16, 0, -16, 21));
@@ -115,47 +94,57 @@ public:
 	FloatRect rect;
 	Sprite sprite;
 
-	bool onGround;
+	int width_text;
+	bool onGround = false;
 	bool exist;
+	bool killed = false;
 	float currnetFrame;
 
-	ENEMY(Texture &image) 
+	ENEMY(Texture &image,int width_text) 
 	{
+		this->width_text = width_text;
 		sprite.setTexture(image);
 		rect = FloatRect(0, 0, 21, 20);
 		rect.left = 806;
 		rect.top = 259;
 		exist = true;
-		dx = dy = 0.05;
+		dx = 0.05;
+		dy = 0;
 		currnetFrame = 0;
 	}
 
 	void update(float time)
 	{
-		rect.left += dx * time;
-
 		if (exist)
-			if (collision(0) == 1)
-				dx *= -1;
+		{
+			rect.left += dx * time;
 
-		if (!onGround) dy = dy + 0.0005 * time;
-		rect.top += dy * time;
-		//onGround = false;
-		if (exist)
-			collision(1);
+			if (!onGround) dy = dy + 0.0005 * time;
+			rect.top += dy * time;
 
-		currnetFrame += 0.003*time;
+			if (exist)
+				if (collision(0) == 1 && !killed)
+					dx *= -1;
 
-		if (currnetFrame > 3) currnetFrame = 0;
-		if (dx < 0) sprite.setTextureRect(IntRect(0 + (21 * int(currnetFrame))+21, 0, -21, 20));
-		if (dx > 0) sprite.setTextureRect(IntRect(0 + (21 * int(currnetFrame)), 0, 21, 20));
+			if (exist && !killed)
+				collision(1);
 
+			currnetFrame += 0.003*time;
+			if (!killed)
+			{
+				if (currnetFrame > 3) currnetFrame = 0;
+				if (dx < 0) sprite.setTextureRect(IntRect(0 + (width_text * int(currnetFrame)) + 21, 0, -21, 20));
+				if (dx > 0) sprite.setTextureRect(IntRect(0 + (width_text * int(currnetFrame)), 0, 21, 20));
+			}
+			else if (rect.top > 480) exist = false;
+		}
 		sprite.setPosition(rect.left - ofsetX, rect.top - ofsetY);
 
 	}
 
 	bool collision(bool dir)
 	{
+		if (!killed)
 		for (int i = rect.top / sb; i < (rect.top + rect.height) / sb; i++)
 			for (int j = rect.left / sb; j < (rect.left + rect.width) / sb; j++)
 			{
@@ -170,19 +159,26 @@ public:
 			}
 	}
 
+	void kill()
+	{
+		sprite.setTextureRect(IntRect(67, 0, 20, 20));
+		dy = -0.3;
+		onGround = false;
+		killed = true;
+	}
+
 };
 
 void kill(PLAYER &pl, ENEMY &en)
 {
-	if (pl.rect.intersects(en.rect))
+	if (pl.rect.intersects(en.rect) && !en.killed)
 	{
 		if (en.exist && pl.exist)
 		{
 			if (pl.dy > 0.0007 && !pl.onGround)
 			{
-				en.exist = false;
-				en.dx = 0;
-				pl.dy -= 0.3;
+				en.kill();
+				pl.dy -= 0.4;
 				std::cout << "minus enemy";
 
 			}
@@ -205,7 +201,7 @@ int main()
 	back.loadFromFile("backgrnd.png");
 	t.loadFromFile("pl.png");
 	m.loadFromFile("map.png");
-	en.loadFromFile("en.png");
+	en.loadFromFile("en1.png");
 	b.loadFromFile("bonus.png");
 	b.loadFromFile("bonus.png");
 
@@ -217,7 +213,7 @@ int main()
 	float currnetFrame = 0;
 
 	PLAYER p(t);
-	ENEMY e(en);
+	ENEMY e(en,21);
 
 	Clock clock;
 	
@@ -248,7 +244,7 @@ int main()
 		{
 			if (p.onGround)
 			{
-				p.dy = -0.25 * p.bonus;
+				p.dy = -0.3;
 				p.onGround = false;
 			}
 		}
