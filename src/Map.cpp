@@ -7,27 +7,33 @@ Map::Map()
 	groundSprite.setTexture(groundTexture);
 }
 
-void Map::update(sf::RenderWindow& window, BaseUnit& unit)
+bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 {
-	if (unit.getRect().top > 640 / 3) ofsetY = unit.getRect().top - 640 / 3;
-	if (unit.getRect().left > 480 / 3) ofsetX = unit.getRect().left - 480 / 3;
+	FloatRect temp = pl.getRect();
+
+	if (pl.getRect().top > window.getSize().x / 2) ofsetY = temp.top - static_cast<float>(window.getSize().x / 3);
+	if (pl.getRect().left > window.getSize().y / 2) ofsetX = temp.left - static_cast<float>(window.getSize().y / 2);
+
+	
+
+	pl.setRect(temp);
 	for (int i = 0; i < H; i++)
 	{
 		for (int j = 0; j < W; j++)
 		{
 			if (map[i][j] == 'B') 
 			{ 
-				groundSprite.setPosition(sb * j - ofsetX, sb * i - ofsetY); 
+				groundSprite.setPosition(sb * j - ofsetX, sb * i - ofsetY);
 				window.draw(groundSprite);
 			}
 		}
 	}
 
-	collision(unit);
-	window.draw(unit.sprite);
+	
+	return true;
 }
 
-bool Map::collision(BaseUnit &unit)
+bool Map::collisionX(BaseUnit& unit)
 {
 	bool collised = false;
 	sf::FloatRect rect = unit.getRect();
@@ -50,6 +56,23 @@ bool Map::collision(BaseUnit &unit)
 					unit.setRect(rect);
 					collised = true;
 				}
+			}
+		}
+	}
+	return collised;
+}
+
+bool Map::collisionY(BaseUnit& unit)
+{
+	bool collised = false;
+	sf::FloatRect rect = unit.getRect();
+	for (int i = rect.top / sb; i < (rect.top + rect.height) / sb; i++)
+	{
+		for (int j = rect.left / sb; j < (rect.left + rect.width) / sb; j++)
+		{
+			//std::cout << "i = " << i << " j = " << j << std::endl;
+			if (map[i][j] == 'B')
+			{
 				if (unit.dy > 0)
 				{
 					rect.top = i * sb - rect.height;
@@ -66,7 +89,15 @@ bool Map::collision(BaseUnit &unit)
 			}
 		}
 	}
-	std::cout << unit.getRect().top << std::endl;
-	std::cout << unit.getRect().left << std::endl;
 	return collised;
+}
+
+double Map::getOfSetX()
+{
+	return ofsetX;
+}
+
+double Map::getOfSetY()
+{
+	return ofsetY;
 }

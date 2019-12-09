@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
-class Map
+#include "IMap.h"
+class Map : public IMap
 {
 public:
 	Map();
@@ -31,8 +32,13 @@ public:
 	"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
 	};
 
-	void update(sf::RenderWindow &window, BaseUnit &pl);
+	bool update(sf::RenderWindow &window, BaseUnit &pl) override;
+	bool collisionX(BaseUnit& unit) override;
+	bool collisionY(BaseUnit& unit) override;
+	double getOfSetX() override;
+	double getOfSetY() override;
 
-	bool collision(BaseUnit &unit);
+	//bool collision(BaseUnit &unit);
+	//~Map() = default;
 };
 

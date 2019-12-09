@@ -8,7 +8,7 @@ Player::Player()
 	sprite.setTexture(pl);
 	rect = FloatRect(0, 0, textLenght, textHeight);
 	rect.left = 100;
-	rect.top = 100;
+	rect.top = 50;
 	exist = true;
 	isPhysical = true;
 	alive = true;
@@ -17,7 +17,7 @@ Player::Player()
 	dy = 0.1;
 }
 
-void Player::update(double time, sf::RenderWindow &window)
+void Player::update(double time, sf::RenderWindow &window, IMap * map)
 {
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
@@ -32,16 +32,18 @@ void Player::update(double time, sf::RenderWindow &window)
 	{
 		if (onGround)
 		{
-			dy = -0.25;
+			dy = -0.30;
 			onGround = false;
 		}
 	}
 
 	rect.left += dx * time;
+	map->collisionX(*this);
 
 	if (!onGround) dy = dy + 0.0005 * time;
 	rect.top += dy * time;
 	onGround = false;
+	map->collisionY(*this);
 
 	curFrame += 0.003 * time;
 
@@ -52,7 +54,8 @@ void Player::update(double time, sf::RenderWindow &window)
 	if (dy < 0 && onGround == false) sprite.setTextureRect(IntRect(textLenght * (countOfFrames - 1), 0, textLenght, textHeight));
 	if (dy < 0 && onGround == false && Keyboard::isKeyPressed(Keyboard::Right)) sprite.setTextureRect(IntRect(textLenght * countOfFrames, 0, -textLenght, textHeight));
 
-	sprite.setPosition(rect.left, rect.top);
+	sprite.setPosition(rect.left - map->getOfSetX(), rect.top - map->getOfSetY());
 
 	dx = 0;
+	window.draw(sprite);
 }

@@ -5,7 +5,7 @@ Game::Game()
 	window.create(sf::VideoMode(640, 480), "Bario");
 	backGroundTexture.loadFromFile("res/backgrnd.png");
 	backGroundSprite.setTexture(backGroundTexture);
-
+	map = new Map;
 }
 
 void Game::start()
@@ -24,8 +24,8 @@ void Game::start()
 				window.close();
 		}
 
-		pl.update(time,window);
-		map.update(window, pl);
+		pl.update(time,window,map);
+		map->update(window, pl);
 		window.display();
 
 	}

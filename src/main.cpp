@@ -250,7 +250,7 @@ int main()
 	float currnetFrame = 0;
 
 	PLAYER p(t);
-	//ENEMY e(en, 21);
+	ENEMY e(en, 21);
 
 	Clock clock;
 
@@ -286,8 +286,8 @@ int main()
 			}
 		}
 		p.update(time);
-		//e.update(time);
-		//kill(p, e);
+		e.update(time);
+		kill(p, e);
 
 		if (p.rect.top > 640 / 2) ofsetY = p.rect.top - 640 / 3;
 		if (p.rect.left > 480 / 2) ofsetX = p.rect.left - 480 / 2;
@@ -300,8 +300,8 @@ int main()
 				if (map[i][j] == 'S') { bonus.setPosition(sb * j - ofsetX, sb * i - ofsetY); window.draw(bonus); }
 			}
 		}
-		//if (e.exist)
-			//window.draw(e.sprite);
+		if (e.exist)
+			window.draw(e.sprite);
 		std::cout << p.rect.top << std::endl;
 		std:: cout << p.rect.left << std::endl;
 		window.draw(p.sprite);

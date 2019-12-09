@@ -12,7 +12,6 @@ class BaseUnit
 public:
 
 	BaseUnit();
-	virtual void update(double time, sf::RenderWindow& window) {};
 	FloatRect getRect() const;
 	void setRect(sf::FloatRect temp);
 	double dx = 0.1;

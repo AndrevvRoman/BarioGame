@@ -1,48 +1,32 @@
-﻿  BaseUnit.cpp
-  Game.cpp
-  Map.cpp
-C:\Users\andre\Desktop\ООП\Bario\src\Game.cpp(17,15): warning C4244: инициализация: преобразование "sf::Int64" в "double", возможна потеря данных
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(34,13): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(34,13): warning C4244:         with
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(34,13): warning C4244:         [
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(34,13): warning C4244:             T=float
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(34,13): warning C4244:         ]
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(36,14): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(36,14): warning C4244:         with
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(36,14): warning C4244:         [
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(36,14): warning C4244:             T=float
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(36,14): warning C4244:         ]
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(49,25): warning C4244: =: преобразование "int" в "T", возможна потеря данных
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(49,25): warning C4244:         with
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(49,25): warning C4244:         [
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(49,25): warning C4244:             T=float
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(49,25): warning C4244:         ]
-  Player.cpp
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(62,24): warning C4244: =: преобразование "int" в "T", возможна потеря данных
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(62,24): warning C4244:         with
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(62,24): warning C4244:         [
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(62,24): warning C4244:             T=float
-C:\Users\andre\Desktop\ООП\Bario\src\Map.cpp(62,24): warning C4244:         ]
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,37): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,37): warning C4244:         with
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,37): warning C4244:         [
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,37): warning C4244:             T=float
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,37): warning C4244:         ]
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,25): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,25): warning C4244:         with
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,25): warning C4244:         [
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,25): warning C4244:             T=float
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(9,25): warning C4244:         ]
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(40,24): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(40,24): warning C4244:         with
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(40,24): warning C4244:         [
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(40,24): warning C4244:             T=float
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(40,24): warning C4244:         ]
-  main.cpp
-  Создание кода...
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(43,23): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(43,23): warning C4244:         with
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(43,23): warning C4244:         [
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(43,23): warning C4244:             T=float
-C:\Users\andre\Desktop\ООП\Bario\src\Player.cpp(43,23): warning C4244:         ]
-  Bario.vcxproj -> C:\Users\andre\Desktop\ООП\Bario\Debug\Bario.exe
+﻿  Map.cpp
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(40,13): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(40,13): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(40,13): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(40,13): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(40,13): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(42,14): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(42,14): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(42,14): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(42,14): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(42,14): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(55,25): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(55,25): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(55,25): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(55,25): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(55,25): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(69,13): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(69,13): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(69,13): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(69,13): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(69,13): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(71,14): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(71,14): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(71,14): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(71,14): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(71,14): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(85,24): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(85,24): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(85,24): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(85,24): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(85,24): warning C4244:         ]
+  Bario.vcxproj -> C:\Users\andre\Desktop\BarioGame\Debug\Bario.exe

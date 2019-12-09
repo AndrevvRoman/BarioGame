@@ -1,0 +1,10 @@
+Debug/
+.vs/Bario/v16/.suo
+*.db
+*.ipch
+*.pdb
+*.tlog
+*.log
+*.tlog
+*.lastbuildstate
+*.tlog

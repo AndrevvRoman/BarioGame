@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="src\BaseUnit.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\IMap.h" />
     <ClInclude Include="src\Map.h" />
     <ClInclude Include="src\Player.h" />
   </ItemGroup>
