@@ -101,3 +101,4 @@ double Map::getOfSetY()
 {
 	return ofsetY;
 }
+

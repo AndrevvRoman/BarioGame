@@ -19,13 +19,12 @@ public:
 	bool onGround = false;
 	Sprite sprite;
 
-protected:
 
 	int textLenght = 0;
 	int textHeight = 0;
 	uint16_t countOfFrames = 0;
 	FloatRect rect;
-	Texture pl;
+	Texture texture;
 	bool exist = false;
 	bool alive = false;
 	double curFrame = 0;

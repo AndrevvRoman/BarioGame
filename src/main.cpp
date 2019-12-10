@@ -1,8 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 
-using namespace sf;
-
 int main()
 {
 	Game game;
@@ -286,7 +284,7 @@ int main()
 			}
 		}
 		p.update(time);
-		e.update(time);
+		//e.update(time);
 		kill(p, e);
 
 		if (p.rect.top > 640 / 2) ofsetY = p.rect.top - 640 / 3;

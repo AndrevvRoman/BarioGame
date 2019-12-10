@@ -1,11 +1,19 @@
-#include "Game.h"
 #include <iostream>
+#include "Game.h"
+#include "Map.h"
+#include "Turtle.h"
+
 Game::Game()
 {
 	window.create(sf::VideoMode(640, 480), "Bario");
 	backGroundTexture.loadFromFile("res/backgrnd.png");
 	backGroundSprite.setTexture(backGroundTexture);
 	map = new Map;
+	enemies.resize(2);
+	for (int i = 0; i < 2; i++)
+	{
+		enemies[i] = new Turtle;
+	}
 }
 
 void Game::start()
@@ -25,8 +33,16 @@ void Game::start()
 		}
 
 		pl.update(time,window,map);
+		for (int i = 0; i < enemies.size(); i++)
+			enemies[i]->update(time, window, map);
 		map->update(window, pl);
+
 		window.display();
 
 	}
+}
+
+Game::~Game()
+{
+	delete map;
 }

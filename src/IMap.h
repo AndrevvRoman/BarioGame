@@ -1,4 +1,5 @@
 #pragma once
+#include "BaseUnit.h"
 class IMap
 {
 public:
@@ -7,6 +8,6 @@ public:
 	virtual bool update(sf::RenderWindow& window, BaseUnit& pl) = 0;
 	virtual double getOfSetX() = 0;
 	virtual double getOfSetY() = 0;
-	//~IMap() = default;
+	~IMap() = default;
 };
 

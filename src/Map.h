@@ -1,6 +1,6 @@
 #pragma once
+#include <vector>
 #include "Player.h"
-#include "IMap.h"
 class Map : public IMap
 {
 public:
@@ -37,8 +37,6 @@ public:
 	bool collisionY(BaseUnit& unit) override;
 	double getOfSetX() override;
 	double getOfSetY() override;
-
-	//bool collision(BaseUnit &unit);
-	//~Map() = default;
+	~Map() = default;
 };
 

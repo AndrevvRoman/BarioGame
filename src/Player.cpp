@@ -4,11 +4,11 @@ Player::Player()
 {
 	textLenght = 16;
 	textHeight = 21;
-	pl.loadFromFile("res/pl.png");
-	sprite.setTexture(pl);
+	texture.loadFromFile("res/pl.png");
+	sprite.setTexture(texture);
 	rect = FloatRect(0, 0, textLenght, textHeight);
 	rect.left = 100;
-	rect.top = 50;
+	rect.top = 100;
 	exist = true;
 	isPhysical = true;
 	alive = true;

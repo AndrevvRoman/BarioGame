@@ -144,13 +144,16 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Turtle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseUnit.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\IEnemy.h" />
     <ClInclude Include="src\IMap.h" />
     <ClInclude Include="src\Map.h" />
     <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Turtle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
