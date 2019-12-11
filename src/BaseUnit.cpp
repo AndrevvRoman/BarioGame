@@ -5,7 +5,7 @@ BaseUnit::BaseUnit()
 
 }
 
-FloatRect BaseUnit::getRect() const
+sf::FloatRect BaseUnit::getRect() const
 {
 	return rect;
 }

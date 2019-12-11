@@ -1,6 +1,8 @@
 #pragma once
 #include "BaseUnit.h"
 #include "IMap.h"
+#include "IEnemy.h"
+
 class Player : public BaseUnit 
 {
 public:
@@ -9,5 +11,6 @@ public:
 	Player();
 	uint16_t HP = 3;
 	void update(double time, sf::RenderWindow &window,IMap * map);
+	bool checkFights(IEnemy & en);
 };
 

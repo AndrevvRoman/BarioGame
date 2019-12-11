@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <iostream>
 
 Player::Player()
 {
@@ -58,4 +59,20 @@ void Player::update(double time, sf::RenderWindow &window, IMap * map)
 
 	dx = 0;
 	window.draw(sprite);
+}
+
+bool Player::checkFights(IEnemy & en)
+{
+	
+	if (rect.intersects(en.getRect()))
+	{
+		if (!onGround && dy > 0.0007)
+		{
+			dy -= 0.5;
+			en.getDamage();
+			std::cout << "Fight!\n";
+			return true;
+		}
+	}
+	return false;
 }

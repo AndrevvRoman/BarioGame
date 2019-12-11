@@ -35,8 +35,11 @@ void Game::start()
 		pl.update(time,window,map);
 		for (int i = 0; i < enemies.size(); i++)
 			enemies[i]->update(time, window, map);
-		map->update(window, pl);
+		for (int i = 0; i < enemies.size(); i++)
+			pl.checkFights(*enemies[i]);
 
+		map->update(window, pl);
+		
 		window.display();
 
 	}

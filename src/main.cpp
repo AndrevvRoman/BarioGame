@@ -157,11 +157,10 @@ public:
 			if (!onGround) dy = dy + 0.0005 * time;
 			rect.top += dy * time;
 
-			if (exist)
-				if (collision(0) == 1 && !killed)
-					dx *= -1;
+			if (collision(0) == 1 && !killed)
+				dx *= -1;
 
-			if (exist && !killed)
+			if (!killed)
 				collision(1);
 
 			currnetFrame += 0.003 * time;
