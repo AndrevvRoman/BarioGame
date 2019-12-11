@@ -66,6 +66,11 @@ sf::FloatRect Turtle::getRect()
 	return this->rect;
 }
 
+bool Turtle::getStatus()
+{
+	return alive;
+}
+
 void Turtle::kill()
 {
 	sprite.setTextureRect(IntRect(textLenght * (countOfFrames - 1), 0, textLenght, textHeight));

@@ -64,7 +64,7 @@ void Player::update(double time, sf::RenderWindow &window, IMap * map)
 bool Player::checkFights(IEnemy & en)
 {
 	
-	if (rect.intersects(en.getRect()))
+	if (rect.intersects(en.getRect()) && en.getStatus())
 	{
 		if (!onGround && dy > 0.0007)
 		{
@@ -73,6 +73,25 @@ bool Player::checkFights(IEnemy & en)
 			std::cout << "Fight!\n";
 			return true;
 		}
+		else
+		{
+			std::cout << "Lose!\n";
+			dy -= 0.02;
+			if (en.getRect().left < rect.left)
+			{
+				dx += 1.8;
+			}
+			else
+			{
+				dx -= 1.8;
+			}
+			return false;
+		}
 	}
-	return false;
+
+}
+
+void Player::getDamage()
+{
+	HP--;
 }

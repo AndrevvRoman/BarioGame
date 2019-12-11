@@ -12,5 +12,6 @@ public:
 	uint16_t HP = 3;
 	void update(double time, sf::RenderWindow &window,IMap * map);
 	bool checkFights(IEnemy & en);
+	void getDamage();
 };
 
