@@ -16,18 +16,19 @@ Player::Player()
 	countOfFrames = 5;
 	dx = 0.1;
 	dy = 0.1;
+	speed = 0.1;
 }
 
 void Player::update(double time, sf::RenderWindow &window, IMap * map)
 {
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
-		dx = -0.1;
+		dx = -speed;
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
-		dx = 0.1;
+		dx = speed;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::Space))
 	{
@@ -36,6 +37,11 @@ void Player::update(double time, sf::RenderWindow &window, IMap * map)
 			dy = -0.30;
 			onGround = false;
 		}
+	}
+
+	if (damageTimer.getElapsedTime().asMilliseconds() > 500)
+	{
+		damaged = false;
 	}
 
 	rect.left += dx * time;
@@ -64,8 +70,11 @@ void Player::update(double time, sf::RenderWindow &window, IMap * map)
 bool Player::checkFights(IEnemy & en)
 {
 	
-	if (rect.intersects(en.getRect()) && en.getStatus())
+	if (rect.intersects(en.getRect()) && en.getStatus() && !damaged)
 	{
+		damaged = true;
+		damageTimer.restart();
+		damageTimer.getElapsedTime();
 		if (!onGround && dy > 0.0007)
 		{
 			dy -= 0.5;
@@ -75,15 +84,17 @@ bool Player::checkFights(IEnemy & en)
 		}
 		else
 		{
+			
 			std::cout << "Lose!\n";
-			dy -= 0.02;
+			dy -= 0.3;
+
 			if (en.getRect().left < rect.left)
 			{
-				dx += 1.8;
+				dx += 70;
 			}
 			else
 			{
-				dx -= 1.8;
+				dx -= 70;
 			}
 			return false;
 		}

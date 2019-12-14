@@ -10,16 +10,17 @@ using sf::Keyboard;
 class BaseUnit
 {
 public:
-
 	BaseUnit();
 	FloatRect getRect() const;
 	void setRect(sf::FloatRect temp);
 	double dx = 0.1;
 	double dy = 0.1;
 	bool onGround = false;
+	bool damaged = false;
 	Sprite sprite;
-
-
+	sf::Clock damageTimer;
+protected:
+	float speed = 0;
 	int textLenght = 0;
 	int textHeight = 0;
 	uint16_t countOfFrames = 0;
