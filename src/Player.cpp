@@ -17,6 +17,10 @@ Player::Player()
 	dx = 0.1;
 	dy = 0.1;
 	speed = 0.1;
+	buffer.resize(2);
+	loadSound(jump, "res/jump.wav");
+	loadSound(hit, "res/hit.wav");
+	loadSound(damage, "res/damage.wav");
 }
 
 void Player::update(double time, sf::RenderWindow &window, IMap * map)
@@ -34,6 +38,7 @@ void Player::update(double time, sf::RenderWindow &window, IMap * map)
 	{
 		if (onGround)
 		{
+			playSound(jump);
 			dy = -0.30;
 			onGround = false;
 		}
@@ -77,17 +82,15 @@ bool Player::checkFights(IEnemy & en)
 		damageTimer.getElapsedTime();
 		if (!onGround && dy > 0.0007)
 		{
+			playSound(hit);
 			dy -= 0.5;
 			en.getDamage();
-			std::cout << "Fight!\n";
 			return true;
 		}
 		else
 		{
-			
-			std::cout << "Lose!\n";
+			playSound(damage);
 			dy -= 0.3;
-
 			if (en.getRect().left < rect.left)
 			{
 				dx += 70;

@@ -3,6 +3,7 @@
 
 Map::Map()
 {
+	generate();
 	groundTexture.loadFromFile("res/ground.png");
 	groundSprite.setTexture(groundTexture);
 }
@@ -19,7 +20,7 @@ bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 	pl.setRect(temp);
 	for (int i = 0; i < H; i++)
 	{
-		for (int j = 0; j < W; j++)
+		for (int j = 0; j < map[i].size(); j++)
 		{
 			if (map[i][j] == 'B') 
 			{ 
@@ -41,7 +42,6 @@ bool Map::collisionX(BaseUnit& unit)
 	{
 		for (int j = rect.left / sb; j < (rect.left + rect.width) / sb; j++)
 		{
-			//std::cout << "i = " << i << " j = " << j << std::endl;
 			if (map[i][j] == 'B')
 			{
 				if (unit.dx > 0)

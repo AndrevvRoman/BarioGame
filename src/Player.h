@@ -2,8 +2,9 @@
 #include "BaseUnit.h"
 #include "IMap.h"
 #include "IEnemy.h"
+#include "Sound.h"
 
-class Player : public BaseUnit 
+class Player : public BaseUnit, public Sound
 {
 public:
 	Player();
