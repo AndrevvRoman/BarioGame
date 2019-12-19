@@ -29,6 +29,14 @@ bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 			}
 		}
 	}
+	sf::FloatRect rect = pl.getRect();
+	if (rect.left > 700)
+	{
+		rect.left = 0;
+		rect.top = 10;
+		pl.setRect(temp);
+		generate();
+	}
 
 	
 	return true;
@@ -38,7 +46,7 @@ bool Map::collisionX(BaseUnit& unit)
 {
 	bool collised = false;
 	sf::FloatRect rect = unit.getRect();
-	for (int i = rect.top / sb; i < (rect.top + rect.height) / sb; i++)
+	for (int i = rect.top / sb; i < ((((rect.top + rect.height) / sb) < 18 ? ((rect.top + rect.height) / sb) : 18)); i++)
 	{
 		for (int j = rect.left / sb; j < (rect.left + rect.width) / sb; j++)
 		{
@@ -66,7 +74,7 @@ bool Map::collisionY(BaseUnit& unit)
 {
 	bool collised = false;
 	sf::FloatRect rect = unit.getRect();
-	for (int i = rect.top / sb; i < (rect.top + rect.height) / sb; i++)
+	for (int i = rect.top / sb; i < (( ((rect.top + rect.height) / sb) < 18 ? ((rect.top + rect.height) / sb) : 18)); i++)
 	{
 		for (int j = rect.left / sb; j < (rect.left + rect.width) / sb; j++)
 		{

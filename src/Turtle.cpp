@@ -9,7 +9,7 @@ Turtle::Turtle()
 	sprite.setTexture(texture);
 	rect = FloatRect(0, 0, textLenght, textHeight);
 	rect.left = rand() % 200 + 100;
-	rect.top = 100;
+	rect.top = 10;
 	exist = true;
 	isPhysical = true;
 	alive = true;

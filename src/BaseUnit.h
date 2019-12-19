@@ -13,7 +13,7 @@ class BaseUnit
 public:
 	BaseUnit();
 	FloatRect getRect() const;
-	void setRect(sf::FloatRect temp);
+	void setRect(const sf::FloatRect & temp);
 	double dx = 0.1;
 	double dy = 0.1;
 	bool onGround = false;

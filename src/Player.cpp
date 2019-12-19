@@ -8,8 +8,8 @@ Player::Player()
 	texture.loadFromFile("res/pl.png");
 	sprite.setTexture(texture);
 	rect = FloatRect(0, 0, textLenght, textHeight);
-	rect.left = 100;
-	rect.top = 100;
+	rect.left = 0;
+	rect.top = 10;
 	exist = true;
 	isPhysical = true;
 	alive = true;
@@ -36,6 +36,7 @@ void Player::update(double time, sf::RenderWindow &window, IMap * map)
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::Space))
 	{
+		std::cout << "x = " << rect.left << "y = " << rect.top << std::endl;
 		if (onGround)
 		{
 			playSound(jump);

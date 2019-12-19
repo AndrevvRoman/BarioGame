@@ -8,3 +8,10 @@ Debug/
 *.tlog
 *.lastbuildstate
 *.tlog
+*.obj
+*.idb
+*.tlog
+*.ilk
+*.log
+*.pdb
+*.obj
