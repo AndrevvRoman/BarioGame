@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClCompile Include="src\BaseUnit.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GUI.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map.cpp" />
     <ClCompile Include="src\MapGenerator.cpp" />
+    <ClCompile Include="src\Mushroom.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Sound.cpp" />
     <ClCompile Include="src\Turtle.cpp" />
@@ -151,10 +153,13 @@
   <ItemGroup>
     <ClInclude Include="src\BaseUnit.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\GUI.h" />
+    <ClInclude Include="src\IBonus.h" />
     <ClInclude Include="src\IEnemy.h" />
     <ClInclude Include="src\IMap.h" />
     <ClInclude Include="src\Map.h" />
     <ClInclude Include="src\MapGenerator.h" />
+    <ClInclude Include="src\Mushroom.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Sound.h" />
     <ClInclude Include="src\Turtle.h" />

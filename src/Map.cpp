@@ -10,13 +10,20 @@ Map::Map()
 
 bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 {
+	bool result = false;
 	FloatRect temp = pl.getRect();
 
 	if (pl.getRect().top > window.getSize().x / 2) ofsetY = temp.top - static_cast<float>(window.getSize().x / 3);
 	if (pl.getRect().left > window.getSize().y / 2) ofsetX = temp.left - static_cast<float>(window.getSize().y / 2);
-
-	
-
+	if (temp.left > 2000)
+	{
+		temp.left = 50;
+		temp.top = 50;
+		ofsetX = 0;
+		ofsetY = 0;
+		generate();
+		result = true;
+	}
 	pl.setRect(temp);
 	for (int i = 0; i < H; i++)
 	{
@@ -29,17 +36,11 @@ bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 			}
 		}
 	}
-	sf::FloatRect rect = pl.getRect();
-	if (rect.left > 700)
-	{
-		rect.left = 0;
-		rect.top = 10;
-		pl.setRect(temp);
-		generate();
-	}
+	//sf/::FloatRect rect = pl.getRect();
+
 
 	
-	return true;
+	return result;
 }
 
 bool Map::collisionX(BaseUnit& unit)

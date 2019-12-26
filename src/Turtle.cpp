@@ -1,15 +1,15 @@
 #include "Turtle.h"
 #include "IMap.h"
-#include<iostream>
+#include <iostream>
 Turtle::Turtle()
 {
+	
 	textLenght = 21;
 	textHeight = 18;
 	texture.loadFromFile("res/turtle.png");
 	sprite.setTexture(texture);
-	rect = FloatRect(0, 0, textLenght, textHeight);
-	rect.left = rand() % 200 + 100;
-	rect.top = 10;
+	rect = FloatRect(rand() % 1900 + 100, 10, textLenght, textHeight);
+	std::cout << "rect.left = " << rect.left << std::endl;
 	exist = true;
 	isPhysical = true;
 	alive = true;
@@ -19,11 +19,16 @@ Turtle::Turtle()
 	speed = 0.05;
 }
 
-void Turtle::update(double time, sf::RenderWindow& window, IMap* map)
+bool Turtle::update(double time, sf::RenderWindow& window, IMap* map)
 {
+	bool result = false;
 	if (damaged)
 	{
-		if (HP <= 0 && alive) kill();
+		if (HP <= 0 && alive)
+		{
+			kill();
+			
+		}
 		else if (damageTimer.getElapsedTime().asMilliseconds() > 200)
 		{
 			damaged = false;
@@ -60,12 +65,16 @@ void Turtle::update(double time, sf::RenderWindow& window, IMap* map)
 	}
 	{
 		if (rect.top > window.getSize().y)
+		{
 			exist = false;
+			result = true;
+		}
 	}
 	sprite.setPosition(rect.left - map->getOfSetX(), rect.top - map->getOfSetY());
 
 	dx = 0;
 	window.draw(sprite);
+	return result;
 }
 
 void Turtle::getDamage()

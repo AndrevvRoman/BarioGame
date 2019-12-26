@@ -5,6 +5,13 @@
 
 void MapGenerator::generate()
 {
+	for (size_t i = 0; i < map.size(); i++)
+	{
+		map[i].clear();
+		map[i].resize(0);
+	}
+	map.clear();
+	map.resize(0);
 	srand(time(NULL));
 	std::ifstream in;
 	std::string temp;

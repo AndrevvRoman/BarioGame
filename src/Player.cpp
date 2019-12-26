@@ -7,15 +7,13 @@ Player::Player()
 	textHeight = 21;
 	texture.loadFromFile("res/pl.png");
 	sprite.setTexture(texture);
-	rect = FloatRect(0, 0, textLenght, textHeight);
-	rect.left = 0;
-	rect.top = 10;
+	rect = FloatRect(25, 25, textLenght, textHeight);
 	exist = true;
 	isPhysical = true;
 	alive = true;
 	countOfFrames = 5;
-	dx = 0.1;
-	dy = 0.1;
+	dx = 0;
+	dy = 0;
 	speed = 0.1;
 	buffer.resize(2);
 	loadSound(jump, "res/jump.wav");
@@ -23,20 +21,41 @@ Player::Player()
 	loadSound(damage, "res/damage.wav");
 }
 
-void Player::update(double time, sf::RenderWindow &window, IMap * map)
+void Player::update(double time, sf::RenderWindow& window, IMap* map)
 {
+
+	if (HP == 0)
+	{
+		alive = false;
+		kill();
+	}
+	if (alive)
+	{
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
-		dx = -speed;
+		if (bonusMask & BonusFilter::speed)
+		{
+			dx = -speed * 1.2;
+		}
+		else
+		{
+			dx = -speed;
+		}
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
-		dx = speed;
+		if (bonusMask & BonusFilter::speed)
+		{
+			dx = speed * 1.2;
+		}
+		else
+		{
+			dx = speed;
+		}
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::Space))
 	{
-		std::cout << "x = " << rect.left << "y = " << rect.top << std::endl;
 		if (onGround)
 		{
 			playSound(jump);
@@ -44,7 +63,8 @@ void Player::update(double time, sf::RenderWindow &window, IMap * map)
 			onGround = false;
 		}
 	}
-
+	
+	}
 	if (damageTimer.getElapsedTime().asMilliseconds() > 500)
 	{
 		damaged = false;
@@ -60,13 +80,15 @@ void Player::update(double time, sf::RenderWindow &window, IMap * map)
 
 	curFrame += 0.003 * time;
 
-	if (curFrame > 3) curFrame = 0;
-	if (dx == 0 && dy == 0) sprite.setTextureRect(IntRect(0, 0, textLenght, textHeight));
-	if (dx < 0) sprite.setTextureRect(IntRect(textLenght + (textLenght * int(curFrame)), 0, textLenght, textHeight));
-	if (dx > 0) sprite.setTextureRect(IntRect(textLenght + (textLenght * int(curFrame)) + textLenght, 0, -textLenght, textHeight));
-	if (dy < 0 && onGround == false) sprite.setTextureRect(IntRect(textLenght * (countOfFrames - 1), 0, textLenght, textHeight));
-	if (dy < 0 && onGround == false && Keyboard::isKeyPressed(Keyboard::Right)) sprite.setTextureRect(IntRect(textLenght * countOfFrames, 0, -textLenght, textHeight));
-
+	if (alive)
+	{
+		if (curFrame > 3) curFrame = 0;
+		if (dx == 0 && dy == 0) sprite.setTextureRect(IntRect(0, 0, textLenght, textHeight));
+		if (dx < 0) sprite.setTextureRect(IntRect(textLenght + (textLenght * int(curFrame)), 0, textLenght, textHeight));
+		if (dx > 0) sprite.setTextureRect(IntRect(textLenght + (textLenght * int(curFrame)) + textLenght, 0, -textLenght, textHeight));
+		if (dy < 0 && onGround == false) sprite.setTextureRect(IntRect(textLenght * (countOfFrames - 1), 0, textLenght, textHeight));
+		if (dy < 0 && onGround == false && Keyboard::isKeyPressed(Keyboard::Right)) sprite.setTextureRect(IntRect(textLenght * countOfFrames, 0, -textLenght, textHeight));
+	}
 	sprite.setPosition(rect.left - map->getOfSetX(), rect.top - map->getOfSetY());
 
 	dx = 0;
@@ -90,15 +112,16 @@ bool Player::checkFights(IEnemy & en)
 		}
 		else
 		{
+			HP--;
 			playSound(damage);
 			dy -= 0.3;
 			if (en.getRect().left < rect.left)
 			{
-				dx += 70;
+				dx += 7;
 			}
 			else
 			{
-				dx -= 70;
+				dx -= 7;
 			}
 			return false;
 		}
@@ -106,7 +129,35 @@ bool Player::checkFights(IEnemy & en)
 
 }
 
+bool Player::checkBonus(IBonus& bonus)
+{
+	if (rect.intersects(bonus.getRect()))
+	{
+
+		bonusMask = bonusMask | bonus.getBonus();
+	}
+	return true;
+}
+
 void Player::getDamage()
 {
 	HP--;
+}
+
+uint16_t Player::getHealth()
+{
+	return HP;
+}
+
+bool Player::getStatus()
+{
+	return alive;
+}
+
+void Player::kill()
+{
+	sprite.setTextureRect(IntRect(0, 0, textLenght, textHeight));
+	if (exist)
+		sprite.rotate(90);
+	exist = false;
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-
 using sf::Texture;
 using sf::FloatRect;
 using sf::Sprite;
@@ -14,14 +13,14 @@ public:
 	BaseUnit();
 	FloatRect getRect() const;
 	void setRect(const sf::FloatRect & temp);
-	double dx = 0.1;
-	double dy = 0.1;
-	bool onGround = false;
+	double dx = 0;
+	double dy = 0;
+	bool onGround = true;
 	bool damaged = false;
 	Sprite sprite;
 	sf::Clock damageTimer;
 protected:
-	float speed = 0;
+	double speed = 0;
 	int textLenght = 0;
 	int textHeight = 0;
 	uint16_t countOfFrames = 0;
