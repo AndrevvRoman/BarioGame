@@ -19,11 +19,14 @@ public:
 	double time = 0;
 	sf::RenderWindow window;
 	void start();
+	~Game();
+private:
 	void updatePlayer();
 	void updateEnemies();
 	void updateBonuses();
 	void checkBonuses();
 	void checkFights();
 	void updateMap();
-	~Game();
+	bool menu();
+	
 };

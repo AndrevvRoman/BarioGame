@@ -9,28 +9,9 @@ protected:
 	sf::Sprite groundSprite;
 	sf::Texture groundTexture;
 	const uint16_t countOfParts = 4;
-	/*std::vector<std::string> map =
-	{
-	"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                   BBBB     BBBBBBBBBBBBBBBBBBBB      B",
-	"B                                  BBBBB                               B",
-	"BBBB                              BBBBBB                               B",
-	"B                                BBBBBBB                               B",
-	"B                               BBBBBBBB                               B",
-	"B                              BBBBBBBBB                               B",
-	"B                             BBBBBBBBBB                               B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"B                                                                      B",
-	"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-	};*/
 	std::vector<std::string> map;
 
 	void generate();
+private:
+	void mergePart(const std::string & temp, std::size_t & j);
 };

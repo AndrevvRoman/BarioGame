@@ -13,9 +13,9 @@ bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 	bool result = false;
 	FloatRect temp = pl.getRect();
 
-	if (pl.getRect().top > window.getSize().x / 2) ofsetY = temp.top - static_cast<float>(window.getSize().x / 3);
-	if (pl.getRect().left > window.getSize().y / 2) ofsetX = temp.left - static_cast<float>(window.getSize().y / 2);
-	if (temp.left > 2000)
+	if (pl.getRect().top > window.getSize().x / 2) ofsetY = temp.top - static_cast<double>(window.getSize().x / 3);
+	if (pl.getRect().left > window.getSize().y / 2) ofsetX = temp.left - static_cast<double>(window.getSize().y / 2);
+	if (temp.left > 200000)
 	{
 		temp.left = 50;
 		temp.top = 50;
@@ -36,8 +36,6 @@ bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 			}
 		}
 	}
-	//sf/::FloatRect rect = pl.getRect();
-
 
 	
 	return result;

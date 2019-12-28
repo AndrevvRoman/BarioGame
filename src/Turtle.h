@@ -6,11 +6,12 @@ class Turtle : public IEnemy , public BaseUnit
 public:
 	Turtle();
 	bool dir = false;
-	int HP = 3;
+	uint16_t HP = 3;
 	bool update(double time, sf::RenderWindow& window, IMap * map) override;
 	void getDamage() override;
 	sf::FloatRect getRect() override;
 	bool getStatus() override;
+	~Turtle() = default;
 private:
 	void kill();
 };

@@ -4,12 +4,18 @@
 #include "Turtle.h"
 #include "Mushroom.h"
 #include <ctime>
+#include <cstdlib>
 
 Game::Game()
 {
 	window.create(sf::VideoMode(640, 480), "Bario");
 	backGroundTexture.loadFromFile("res/backgrnd.png");
 	backGroundSprite.setTexture(backGroundTexture);
+	if (!menu())
+	{
+		exit(EXIT_SUCCESS);
+	}
+
 	map = new Map;
 	srand(std::time(NULL));
 	enemies.resize(rand() % 5 + 1);
@@ -19,7 +25,7 @@ Game::Game()
 		enemies[i] = new Turtle;
 	}
 
-	bonuses.resize(1);
+	bonuses.resize(rand() % 3 + 1);
 	for (size_t i = 0; i < bonuses.size(); i++)
 	{
 		bonuses[i] = new Mushroom;
@@ -31,6 +37,14 @@ void Game::start()
 
 	while (window.isOpen())
 	{
+		if (Keyboard::isKeyPressed(Keyboard::Escape))
+		{
+			if (!menu())
+			{
+				exit(EXIT_SUCCESS);
+			}
+			clock.restart();
+		}
 		window.clear();
 		window.draw(backGroundSprite);
 
@@ -115,7 +129,64 @@ void Game::updateMap()
 		{
 			enemies[i] = new Turtle;
 		}
+
+		bonuses.resize(0);
+		bonuses.resize(rand() % 3 + 1);
+		for (size_t i = 0; i < bonuses.size(); i++)
+		{
+			bonuses[i] = new Mushroom;
+		}
 	}
+}
+
+bool Game::menu()
+{
+	sf::Clock animTimer;
+	int choose = 0;
+	setMenu(window);
+	animTimer.restart();
+	while (window.isOpen())
+	{
+		window.clear();
+		window.draw(backGroundSprite);
+
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+		if (Keyboard::isKeyPressed(Keyboard::Down) && (animTimer.getElapsedTime().asMilliseconds() > 500))
+		{
+			choose++;
+			if (choose >= getStringCount())
+				choose = 0;
+			animTimer.restart();
+		}
+
+		if (Keyboard::isKeyPressed(Keyboard::Up) && (animTimer.getElapsedTime().asMilliseconds() > 500))
+		{
+			choose--;
+			if (choose < 0)
+				choose = getStringCount() - 1;
+			animTimer.restart();
+		}
+
+		if (Keyboard::isKeyPressed(Keyboard::Enter) && (animTimer.getElapsedTime().asMilliseconds() > 500))
+		{
+			if (choose == 0)
+				return true;
+			else
+				return false;
+		}
+
+
+		drawMenu(window, choose);
+		
+		window.display();
+
+	}
+	return false;
 }
 
 Game::~Game()

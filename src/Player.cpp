@@ -115,14 +115,14 @@ bool Player::checkFights(IEnemy & en)
 			HP--;
 			playSound(damage);
 			dy -= 0.3;
-			if (en.getRect().left < rect.left)
+			/*if (en.getRect().left < rect.left)
 			{
 				dx += 7;
 			}
 			else
 			{
 				dx -= 7;
-			}
+			}*/
 			return false;
 		}
 	}

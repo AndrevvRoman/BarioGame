@@ -7,8 +7,7 @@ class Map : public IMap , protected MapGenerator
 {
 public:
 	Map();
-	
-	float ofsetX = 0, ofsetY = 0;
+	double ofsetX = 0, ofsetY = 0;
 	bool update(sf::RenderWindow &window, BaseUnit &pl) override;
 	bool collisionX(BaseUnit& unit) override;
 	bool collisionY(BaseUnit& unit) override;

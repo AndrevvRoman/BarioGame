@@ -38,3 +38,44 @@ void GUI::updateGUI(sf::RenderWindow& window, uint16_t hp, uint16_t score)
 	scoreCount.setString(s2);
 	window.draw(scoreCount);
 }
+
+void GUI::setMenu(sf::RenderWindow& window)
+{
+	menu.resize(2);
+	menuText.resize(2);
+	for (size_t i = 0; i < menu.size(); i++)
+	{
+		menuText[i].setFont(font);
+		menu[i].setSize(sf::Vector2f(300, 50));
+		menuText[i].setCharacterSize(30);
+		menu[i].setPosition((window.getSize().x / 2) - (menu[i].getSize().x / 2), ((window.getSize().y / 2) + i * 1.5 * menu[i].getSize().y) - (menu[i].getSize().y / 2));
+		menuText[i].setPosition(sf::Vector2f(menu[i].getPosition().x, menu[i].getPosition().y));
+		menu[i].setFillColor(sf::Color::Black);
+		menuText[i].setFillColor(sf::Color::Yellow);
+	}
+
+	menuText[0].setString("start");
+	menuText[1].setString("exit");
+}
+
+size_t GUI::getStringCount()
+{
+	return menu.size();
+}
+
+void GUI::drawMenu(sf::RenderWindow& window, int choosen)
+{
+	for (size_t i = 0; i < menu.size(); i++)
+	{
+		menu[i].setFillColor(sf::Color::Black);
+		menuText[i].setFillColor(sf::Color::Yellow);
+		if (i == choosen)
+		{
+			menu[i].setFillColor(sf::Color::Yellow);
+			menuText[i].setFillColor(sf::Color::Black);
+		}
+		
+		window.draw(menu[i]);
+		window.draw(menuText[i]);
+	}
+}

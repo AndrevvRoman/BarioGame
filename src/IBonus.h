@@ -10,7 +10,6 @@ enum BonusFilter
 class IBonus
 {
 public:
-
 	virtual uint16_t getBonus() = 0;
 	virtual bool getStatus() = 0;
 	virtual sf::FloatRect getRect() = 0;
