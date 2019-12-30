@@ -140,8 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\BaseUnit.cpp" />
+    <ClCompile Include="src\Buzzer.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GUI.cpp" />
+    <ClCompile Include="src\IMap.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map.cpp" />
     <ClCompile Include="src\MapGenerator.cpp" />
@@ -152,9 +154,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseUnit.h" />
+    <ClInclude Include="src\Buzzer.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GUI.h" />
     <ClInclude Include="src\IBonus.h" />
+    <ClInclude Include="src\IBoss.h" />
     <ClInclude Include="src\IEnemy.h" />
     <ClInclude Include="src\IMap.h" />
     <ClInclude Include="src\Map.h" />

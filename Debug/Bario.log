@@ -1,9 +1,6 @@
 ﻿  Game.cpp
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(20,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(23,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(57,47): warning C4244: =: преобразование "sf::Int64" в "double", возможна потеря данных
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(81,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(114,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(123,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(162,15): warning C4018: >=: несоответствие типов со знаком и без знака
+C:\Users\andre\Desktop\BarioGame\src\Game.cpp(21,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Game.cpp(64,47): warning C4244: =: преобразование "sf::Int64" в "double", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Game.cpp(137,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\andre\Desktop\BarioGame\src\Game.cpp(188,15): warning C4018: >=: несоответствие типов со знаком и без знака
   Bario.vcxproj -> C:\Users\andre\Desktop\BarioGame\Debug\Bario.exe

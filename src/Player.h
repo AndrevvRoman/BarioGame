@@ -3,6 +3,7 @@
 #include "IMap.h"
 #include "IEnemy.h"
 #include "IBonus.h"
+#include "IBoss.h"
 #include "Sound.h"
 
 class Player : public BaseUnit, public Sound
@@ -12,8 +13,9 @@ public:
 	double ofsetX = 0;
 	double ofsetY = 0;
 	uint16_t bonusMask = 0;
-	void update(double time, sf::RenderWindow &window,IMap * map);
+	bool update(double time, sf::RenderWindow &window,IMap * map);
 	bool checkFights(IEnemy & en);
+	bool checkFights(IBoss& en);
 	bool checkBonus(IBonus& bonus);
 	void getDamage();
 	uint16_t getHealth(); 
@@ -21,5 +23,6 @@ public:
 private:
 	void kill();
 	uint16_t HP = 3;
+	sf::Clock deathTimer;
 };
 

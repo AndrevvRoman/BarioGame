@@ -79,6 +79,15 @@ void MapGenerator::generate()
 		last = choosenPart;
 		choosenPart = -1;
 	}
+	j = 0;
+	in.open("res/part_boss.txt");
+	while (std::getline(in, temp))
+	{
+		mergePart(temp, j);
+	}
+	in.close();
+
+
 	for (size_t i = 0; i < map.size(); i++)
 	{
 		map[i].insert(map[i].begin(), 'B');

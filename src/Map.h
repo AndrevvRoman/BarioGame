@@ -13,6 +13,7 @@ public:
 	bool collisionY(BaseUnit& unit) override;
 	double getOfSetX() override;
 	double getOfSetY() override;
+	sf::Vector2f getEdgeCoords() override;
 	~Map() = default;
 };
 

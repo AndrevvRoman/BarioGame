@@ -38,7 +38,7 @@ bool Mushroom::update(double time, sf::RenderWindow& window, IMap* map)
 		dx = 0;
 		window.draw(sprite);
 	}
-	return true;
+	return alive;
 }
 
 uint16_t Mushroom::getBonus()

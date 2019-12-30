@@ -4,8 +4,14 @@
 
 int main()
 {
-	Game game;
-	game.start();
+	Game * game = nullptr;
+	while (true)
+	{
+		game = new Game;
+		game->start();
+		delete game;
+	}
+	
 }
 
 /*

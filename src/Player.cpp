@@ -21,13 +21,18 @@ Player::Player()
 	loadSound(damage, "res/damage.wav");
 }
 
-void Player::update(double time, sf::RenderWindow& window, IMap* map)
+bool Player::update(double time, sf::RenderWindow& window, IMap* map)
 {
-
+	bool result = false;
 	if (HP == 0)
 	{
 		alive = false;
 		kill();
+		if (deathTimer.getElapsedTime().asSeconds() > 5)
+		{
+			std::cout << "Timer worked\n";
+			result = true;
+		}
 	}
 	if (alive)
 	{
@@ -57,7 +62,8 @@ void Player::update(double time, sf::RenderWindow& window, IMap* map)
 	if (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::Space))
 	{
 		if (onGround)
-		{
+		{ 
+			std::cout << "x = " << rect.left << " y = " << rect.top << std::endl;
 			playSound(jump);
 			dy = -0.30;
 			onGround = false;
@@ -93,6 +99,7 @@ void Player::update(double time, sf::RenderWindow& window, IMap* map)
 
 	dx = 0;
 	window.draw(sprite);
+	return result;
 }
 
 bool Player::checkFights(IEnemy & en)
@@ -129,11 +136,44 @@ bool Player::checkFights(IEnemy & en)
 
 }
 
+bool Player::checkFights(IBoss& en)
+{
+
+	if (rect.intersects(en.getRect()) && en.getStatus() && !damaged)
+	{
+		damaged = true;
+		damageTimer.restart();
+		damageTimer.getElapsedTime();
+		if (!onGround && dy > 0.0007)
+		{
+			playSound(hit);
+			dy -= 0.5;
+			en.getDamage();
+			return true;
+		}
+		else
+		{
+			HP--;
+			playSound(damage);
+			dy -= 0.3;
+			/*if (en.getRect().left < rect.left)
+			{
+				dx += 7;
+			}
+			else
+			{
+				dx -= 7;
+			}*/
+			return false;
+		}
+	}
+
+}
+
 bool Player::checkBonus(IBonus& bonus)
 {
 	if (rect.intersects(bonus.getRect()))
 	{
-
 		bonusMask = bonusMask | bonus.getBonus();
 	}
 	return true;
@@ -156,8 +196,12 @@ bool Player::getStatus()
 
 void Player::kill()
 {
+	
 	sprite.setTextureRect(IntRect(0, 0, textLenght, textHeight));
 	if (exist)
+	{
 		sprite.rotate(90);
+		deathTimer.restart();
+	}
 	exist = false;
 }

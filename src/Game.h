@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "IEnemy.h"
 #include "IBonus.h"
+#include "IBoss.h"
 #include "GUI.h"
 #include <list>
 class Game : public GUI
@@ -12,6 +13,7 @@ public:
 	uint16_t score = 0;
 	std::vector<IEnemy*> enemies;
 	std::vector<IBonus*> bonuses;
+	IBoss * boss = nullptr;
 	IMap * map = nullptr;
 	sf::Texture backGroundTexture;
 	sf::Sprite backGroundSprite;
@@ -21,7 +23,7 @@ public:
 	void start();
 	~Game();
 private:
-	void updatePlayer();
+	bool updatePlayer();
 	void updateEnemies();
 	void updateBonuses();
 	void checkBonuses();

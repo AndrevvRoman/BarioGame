@@ -1,5 +1,6 @@
 #include "GUI.h"
 #include <iostream>
+#include <fstream>
 GUI::GUI()
 {
 	font.loadFromFile("res/font.ttf");
@@ -42,7 +43,7 @@ void GUI::updateGUI(sf::RenderWindow& window, uint16_t hp, uint16_t score)
 void GUI::setMenu(sf::RenderWindow& window)
 {
 	menu.resize(2);
-	menuText.resize(2);
+	menuText.resize(3);
 	for (size_t i = 0; i < menu.size(); i++)
 	{
 		menuText[i].setFont(font);
@@ -53,14 +54,65 @@ void GUI::setMenu(sf::RenderWindow& window)
 		menu[i].setFillColor(sf::Color::Black);
 		menuText[i].setFillColor(sf::Color::Yellow);
 	}
-
-	menuText[0].setString("start");
+	menuText[0].setString("play");
 	menuText[1].setString("exit");
+
+	menuText[2].setFont(font);
+	menuText[2].setCharacterSize(40);
+	menuText[2].setPosition(menu[0].getPosition().x, menu[0].getPosition().y - 1.5 * menu[0].getSize().y);
+	menuText[2].setFillColor(sf::Color::Black);
+	menuText[2].setString("high score");
+
+	
+	highScore.setFont(font);
+	highScore.setCharacterSize(40);
+	highScore.setPosition(menu[0].getPosition().x + menuText[2].getCharacterSize() * 5, menu[0].getPosition().y - 1.5 * menu[0].getSize().y);
+	highScore.setFillColor(sf::Color::Black);
+	auto s = std::to_string(getHighScore());
+	highScore.setString(s);
 }
 
 size_t GUI::getStringCount()
 {
 	return menu.size();
+}
+
+uint16_t GUI::getHighScore()
+{
+	std::ifstream in("C:\\Users\\Public\\Documents\\save.txt");
+	if (!in)
+	{
+		std::cout << "FileEr\n";
+	}
+	uint16_t score;
+	in >> score;
+	in.close();
+	std::cout << score << std::endl;
+	return score;
+}
+
+void GUI::setHighScore(uint16_t curScore)
+{
+	std::ifstream in("C:\\Users\\Public\\Documents\\save.txt");
+	if (!in.is_open())
+	{
+		std::cout << "in FileEr\n";
+	}
+	uint16_t score;
+	in >> score;
+	in.close();
+	if (curScore > score)
+	{
+		std::ofstream out("C:\\Users\\Public\\Documents\\save.txt");
+		if (!out.is_open())
+		{
+			std::cout << "out FileEr\n";
+		}
+
+		out << curScore;
+		out.close();
+	}
+
 }
 
 void GUI::drawMenu(sf::RenderWindow& window, int choosen)
@@ -78,4 +130,6 @@ void GUI::drawMenu(sf::RenderWindow& window, int choosen)
 		window.draw(menu[i]);
 		window.draw(menuText[i]);
 	}
+	window.draw(menuText[2]);
+	window.draw(highScore);
 }

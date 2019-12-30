@@ -8,13 +8,16 @@ public:
 	void drawMenu(sf::RenderWindow& window, int choosen);
 	void setMenu(sf::RenderWindow& window);
 	size_t getStringCount();
+	void setHighScore(uint16_t);
 	~GUI() = default;
 private:
+	uint16_t getHighScore();
 	sf::Text healthText;
 	sf::Text scoreText;
 	sf::Text scoreCount;
 	sf::Text healthCount;
 	std::vector<sf::Text> menuText;
+	sf::Text highScore;
 	sf::Font font;
 	std::vector<sf::RectangleShape> menu;
 };

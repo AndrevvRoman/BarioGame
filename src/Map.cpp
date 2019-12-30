@@ -15,7 +15,7 @@ bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 
 	if (pl.getRect().top > window.getSize().x / 2) ofsetY = temp.top - static_cast<double>(window.getSize().x / 3);
 	if (pl.getRect().left > window.getSize().y / 2) ofsetX = temp.left - static_cast<double>(window.getSize().y / 2);
-	if (temp.left > 200000)
+	if (temp.left > 2000000)
 	{
 		temp.left = 50;
 		temp.top = 50;
@@ -66,6 +66,7 @@ bool Map::collisionX(BaseUnit& unit)
 			}
 		}
 	}
+	
 	return collised;
 }
 
@@ -78,6 +79,7 @@ bool Map::collisionY(BaseUnit& unit)
 		for (int j = rect.left / sb; j < (rect.left + rect.width) / sb; j++)
 		{
 			//std::cout << "i = " << i << " j = " << j << std::endl;
+			if (j < 0) j = 0;
 			if (map[i][j] == 'B')
 			{
 				if (unit.dy > 0)
@@ -96,6 +98,11 @@ bool Map::collisionY(BaseUnit& unit)
 			}
 		}
 	}
+	if (rect.top < 10 || rect.top > 350)
+	{
+		rect.top = 50;
+		unit.setRect(rect);
+	}
 	return collised;
 }
 
@@ -107,5 +114,10 @@ double Map::getOfSetX()
 double Map::getOfSetY()
 {
 	return ofsetY;
+}
+
+sf::Vector2f Map::getEdgeCoords()
+{
+	return sf::Vector2f(W * sb, H * sb);
 }
 

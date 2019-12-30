@@ -3,6 +3,7 @@
 #include "Map.h"
 #include "Turtle.h"
 #include "Mushroom.h"
+#include "Buzzer.h"
 #include <ctime>
 #include <cstdlib>
 
@@ -19,17 +20,20 @@ Game::Game()
 	map = new Map;
 	srand(std::time(NULL));
 	enemies.resize(rand() % 5 + 1);
-	std::cout << "enem size = " << enemies.size() << std::endl;
-	for (int i = 0; i < enemies.size(); i++)
+	for (size_t i = 0; i < enemies.size(); i++)
 	{
 		enemies[i] = new Turtle;
 	}
 
-	bonuses.resize(rand() % 3 + 1);
+	bonuses.resize(rand() % 2 + 1);
 	for (size_t i = 0; i < bonuses.size(); i++)
 	{
 		bonuses[i] = new Mushroom;
 	}
+
+	boss = new Buzzer;
+	boss->setCoords(map->getEdgeCoords().x - 300, map->getEdgeCoords().y - 100);
+
 }
 
 void Game::start()
@@ -42,9 +46,12 @@ void Game::start()
 			if (!menu())
 			{
 				exit(EXIT_SUCCESS);
+				
 			}
-			clock.restart();
+			
 		}
+		
+		//clock.restart();
 		window.clear();
 		window.draw(backGroundSprite);
 
@@ -57,13 +64,13 @@ void Game::start()
 		time = clock.getElapsedTime().asMicroseconds();
 		clock.restart();
 		time /= 800;
-		updatePlayer();
+		if (updatePlayer())
+			return;
 		updateEnemies();
 		updateBonuses();
 		checkFights();
 		checkBonuses();
 		updateMap();
-
 		updateGUI(window, pl.getHealth(), score);
 		
 		window.display();
@@ -71,20 +78,32 @@ void Game::start()
 	}
 }
 
-void Game::updatePlayer()
+bool Game::updatePlayer()
 {
-	pl.update(time, window, map);
+	if (pl.update(time, window, map))
+	{
+		
+		setHighScore(score);
+		return true;
+	}
+	return false;
 }
 
 void Game::updateEnemies()
 {
-	for (int i = 0; i < enemies.size(); i++)
+	for (size_t i = 0; i < enemies.size(); i++)
 	{
 		if (enemies[i]->update(time, window, map))
 		{
 			score += 100;
 			enemies.erase(enemies.begin() + i);
+			std::cout << "deleted\n";
 		}
+	}
+	if (boss->update(time, window, map))
+	{
+		score += 1000;
+		delete boss;
 	}
 }
 
@@ -92,7 +111,11 @@ void Game::updateBonuses()
 {
 	for (size_t i = 0; i < bonuses.size(); i++)
 	{
-		bonuses[i]->update(time, window, map);
+		
+		if (!bonuses[i]->update(time, window, map))
+		{
+			bonuses.erase(bonuses.begin() + i);
+		}
 	}
 }
 
@@ -113,6 +136,7 @@ void Game::checkFights()
 	{
 		for (int i = 0; i < enemies.size(); i++)
 			pl.checkFights(*enemies[i]);
+		pl.checkFights(*boss);
 	}
 }
 
@@ -120,22 +144,24 @@ void Game::checkFights()
 
 void Game::updateMap()
 {
-	srand(std::time(NULL));
 	if (map->update(window, pl))
 	{
 		enemies.resize(0);
-		enemies.resize(rand() % 5);
+		enemies.resize(rand() % 5 + 1);
+
+		bonuses.resize(0);
+		bonuses.resize(rand() % 2 + 1);
+
 		for (size_t i = 0; i < enemies.size(); i++)
 		{
 			enemies[i] = new Turtle;
 		}
 
-		bonuses.resize(0);
-		bonuses.resize(rand() % 3 + 1);
 		for (size_t i = 0; i < bonuses.size(); i++)
 		{
 			bonuses[i] = new Mushroom;
 		}
+
 	}
 }
 
@@ -156,7 +182,7 @@ bool Game::menu()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		if (Keyboard::isKeyPressed(Keyboard::Down) && (animTimer.getElapsedTime().asMilliseconds() > 500))
+		if (Keyboard::isKeyPressed(Keyboard::Down) && (animTimer.getElapsedTime().asMilliseconds() > 300))
 		{
 			choose++;
 			if (choose >= getStringCount())
@@ -164,7 +190,7 @@ bool Game::menu()
 			animTimer.restart();
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::Up) && (animTimer.getElapsedTime().asMilliseconds() > 500))
+		if (Keyboard::isKeyPressed(Keyboard::Up) && (animTimer.getElapsedTime().asMilliseconds() > 300))
 		{
 			choose--;
 			if (choose < 0)
@@ -172,7 +198,7 @@ bool Game::menu()
 			animTimer.restart();
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::Enter) && (animTimer.getElapsedTime().asMilliseconds() > 500))
+		if (Keyboard::isKeyPressed(Keyboard::Enter) && (animTimer.getElapsedTime().asMilliseconds() > 300))
 		{
 			if (choose == 0)
 				return true;

@@ -1,24 +1,27 @@
-#include "Turtle.h"
-#include "IMap.h"
+#include "Buzzer.h"
 #include <iostream>
-Turtle::Turtle()
+Buzzer::Buzzer()
 {
-	textLenght = 21;
-	textHeight = 18;
-	texture.loadFromFile("res/turtle.png");
+	textLenght = 32;
+	textHeight = 32;
+	texture.loadFromFile("res/buzzer.png");
 	sprite.setTexture(texture);
-	rect = FloatRect(rand() % 1500 + 100, 10, textLenght, textHeight);
-	//std::cout << "rect.left = " << rect.left << std::endl;
+	rect = FloatRect(400, 10, textLenght, textHeight);
 	exist = true;
 	isPhysical = true;
 	alive = true;
-	countOfFrames = 5;
+	countOfFrames = 4;
 	dx = 0.1;
 	dy = 0.1;
-	speed = 0.05;
+	speed = 0.2;
 }
 
-bool Turtle::update(double time, sf::RenderWindow& window, IMap* map)
+bool Buzzer::getStatus()
+{
+	return alive;
+}
+
+bool Buzzer::update(double time, sf::RenderWindow& window, IMap* map)
 {
 	bool result = false;
 	if (damaged)
@@ -51,15 +54,15 @@ bool Turtle::update(double time, sf::RenderWindow& window, IMap* map)
 	if (alive && !damaged)
 	{
 		curFrame += 0.003 * time;
-		if (curFrame > countOfFrames - 1) curFrame = 0;
+		if (curFrame > countOfFrames) curFrame = 0;
 		if (dx == 0 && dy == 0) sprite.setTextureRect(IntRect(0, 0, textLenght, textHeight));
-		if (dx > 0) sprite.setTextureRect(IntRect(textLenght * int(curFrame), 0, textLenght, textHeight));
-		if (dx < 0) sprite.setTextureRect(IntRect(textLenght * int(curFrame) + textLenght, 0, -textLenght, textHeight));
+		if (dx < 0) sprite.setTextureRect(IntRect(textLenght * int(curFrame), 0, textLenght, textHeight));
+		if (dx > 0) sprite.setTextureRect(IntRect(textLenght * int(curFrame) + textLenght, 0, -textLenght, textHeight));
 	}
 	else if (damaged)
 	{
 		sprite.setTextureRect(IntRect(textLenght * (countOfFrames - 1), 0, textLenght, textHeight));
-		
+
 	}
 	{
 		if (rect.top > window.getSize().y)
@@ -68,7 +71,6 @@ bool Turtle::update(double time, sf::RenderWindow& window, IMap* map)
 			result = true;
 		}
 	}
-	//std::cout << "rect left = " << rect.left << " rect top = " << rect.top << std::endl;
 	sprite.setPosition(rect.left - map->getOfSetX(), rect.top - map->getOfSetY());
 
 	dx = 0;
@@ -76,35 +78,30 @@ bool Turtle::update(double time, sf::RenderWindow& window, IMap* map)
 	return result;
 }
 
-void Turtle::getDamage()
+void Buzzer::getDamage()
 {
-	damaged = true;
-	damageTimer.restart();
-	damageTimer.getElapsedTime();
 	HP--;
 }
 
-sf::FloatRect Turtle::getRect()
+sf::FloatRect Buzzer::getRect()
 {
-	return this->rect;
+	return rect;
 }
 
-bool Turtle::getStatus()
+void Buzzer::getReward()
 {
-	return alive;
 }
 
-void Turtle::setCoords(double x, double y)
+void Buzzer::setCoords(double x, double y)
 {
 	rect.left = x;
 	rect.top = y;
 }
 
-void Turtle::kill()
+void Buzzer::kill()
 {
 	sprite.setTextureRect(IntRect(textLenght * (countOfFrames - 1), 0, textLenght, textHeight));
 	dy = -0.4;
 	onGround = false;
 	alive = false;
 }
-
