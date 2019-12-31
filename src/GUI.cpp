@@ -79,22 +79,32 @@ size_t GUI::getStringCount()
 
 uint16_t GUI::getHighScore()
 {
-	std::ifstream in("C:\\Users\\Public\\Documents\\save.txt");
-	if (!in)
+	uint16_t score = 0;
+	std::ifstream in;
+	in.open("C:\\Users\\Public\\Documents\\save.txt",std::ios::in);
+	if (!in.is_open())
 	{
-		std::cout << "FileEr\n";
+		std::cout << "No save file. Creating..\n";
+		std::ofstream out;
+		out.open("C:\\Users\\Public\\Documents\\save.txt", std::ios::out);
+		out << 0;
+		std::cout << "Done\n";
+		out.close();
 	}
-	uint16_t score;
-	in >> score;
-	in.close();
-	std::cout << score << std::endl;
+	else
+	{
+		in >> score;
+		in.close();
+		std::cout << score << std::endl;
+	}
 	return score;
 }
 
 void GUI::setHighScore(uint16_t curScore)
 {
 
-	std::ifstream in("C:\\Users\\Public\\Documents\\save.txt");
+	std::ifstream in;
+	in.open("C:\\Users\\Public\\Documents\\save.txt", std::ios::in);
 	if (!in.is_open())
 	{
 		std::cout << "in FileEr\n";
@@ -104,7 +114,8 @@ void GUI::setHighScore(uint16_t curScore)
 	in.close();
 	if (curScore > score)
 	{
-		std::ofstream out("C:\\Users\\Public\\Documents\\save.txt");
+		std::ofstream out;
+		out.open("C:\\Users\\Public\\Documents\\save.txt", std::ios::out);
 		if (!out.is_open())
 		{
 			std::cout << "out FileEr\n";
