@@ -1,4 +1,5 @@
 #include "Buzzer.h"
+#include "FactoryEnemy.h"
 #include <iostream>
 Buzzer::Buzzer()
 {
@@ -71,8 +72,8 @@ bool Buzzer::update(double time, sf::RenderWindow& window, IMap* map)
 			result = true;
 		}
 	}
-	sprite.setPosition(rect.left - map->getOfSetX(), rect.top - map->getOfSetY());
 
+	sprite.setPosition(rect.left - map->getOfSetX(), rect.top - map->getOfSetY());
 	dx = 0;
 	window.draw(sprite);
 	return result;
@@ -80,6 +81,12 @@ bool Buzzer::update(double time, sf::RenderWindow& window, IMap* map)
 
 void Buzzer::getDamage()
 {
+	FactoryEnemy::createTurtle(static_cast<double>(rect.left) + 100, static_cast<double>(rect.top) + 50);
+	FactoryEnemy::createTurtle(static_cast<double>(rect.left) + 200, static_cast<double>(rect.top) + 50);
+
+	damaged = true;
+	damageTimer.restart();
+	damageTimer.getElapsedTime();
 	HP--;
 }
 

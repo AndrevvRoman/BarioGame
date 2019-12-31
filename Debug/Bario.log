@@ -1,6 +1,188 @@
-﻿  Game.cpp
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(21,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(64,47): warning C4244: =: преобразование "sf::Int64" в "double", возможна потеря данных
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(137,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\andre\Desktop\BarioGame\src\Game.cpp(188,15): warning C4018: >=: несоответствие типов со знаком и без знака
+﻿  BaseUnit.cpp
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(20,14): warning C4244: =: преобразование "const double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(20,14): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(20,14): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(20,14): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(20,14): warning C4244:         ]
+  Buzzer.cpp
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(21,13): warning C4244: =: преобразование "const double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(21,13): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(21,13): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(21,13): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\BaseUnit.cpp(21,13): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,40): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,40): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,40): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,40): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,40): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,28): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,28): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,28): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,28): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(10,28): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(44,25): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(44,25): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(44,25): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(44,25): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(44,25): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(50,24): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(50,24): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(50,24): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(50,24): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(50,24): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(76,60): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(76,31): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(104,14): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(104,14): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(104,14): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(104,14): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(104,14): warning C4244:         ]
+  FactoryBonus.cpp
+  FactoryEnemy.cpp
+  Game.cpp
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(105,13): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(105,13): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(105,13): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(105,13): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Buzzer.cpp(105,13): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Game.cpp(20,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Game.cpp(65,47): warning C4244: =: преобразование "sf::Int64" в "double", возможна потеря данных
+  Map.cpp
+C:\Users\andre\Desktop\BarioGame\src\Game.cpp(198,15): warning C4018: >=: несоответствие типов со знаком и без знака
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(25,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(29,54): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(29,37): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(43,13): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(43,13): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(43,13): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(43,13): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(43,13): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(45,14): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(45,14): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(45,14): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(45,14): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(45,14): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(57,25): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(57,25): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(57,25): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(57,25): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(57,25): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(72,13): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(72,13): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(72,13): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(72,13): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(72,13): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(74,14): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(74,14): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(74,14): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(74,14): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(74,14): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(89,24): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(89,24): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(89,24): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(89,24): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(89,24): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,32): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,32): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,32): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,32): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,32): warning C4244:         ]
+  Mushroom.cpp
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,24): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,24): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,24): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,24): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Map.cpp(116,24): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,50): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,50): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,50): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,50): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,50): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,38): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,38): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,38): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,38): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,38): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,26): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,26): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,26): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,26): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(10,26): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(23,24): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(23,24): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(23,24): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(23,24): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(23,24): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(27,23): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(27,23): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(27,23): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(27,23): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(27,23): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(36,61): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+  Player.cpp
+C:\Users\andre\Desktop\BarioGame\src\Mushroom.cpp(36,32): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,39): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,39): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,39): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,39): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,39): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,27): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,27): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,27): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,27): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(10,27): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(79,24): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(79,24): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(79,24): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(79,24): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(79,24): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(83,23): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(83,23): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(83,23): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(83,23): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(83,23): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(98,60): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+  Turtle.cpp
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(98,31): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,56): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,56): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,56): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,56): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,56): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,44): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,44): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,44): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,44): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,44): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,33): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,33): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,33): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,33): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(10,33): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(40,25): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(40,25): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(40,25): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(40,25): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(40,25): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(46,24): warning C4244: +=: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(46,24): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(46,24): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(46,24): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(46,24): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(72,60): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(72,31): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(99,14): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(99,14): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(99,14): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(99,14): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(99,14): warning C4244:         ]
+  main.cpp
+  Создание кода...
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(100,13): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(100,13): warning C4244:         with
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(100,13): warning C4244:         [
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(100,13): warning C4244:             T=float
+C:\Users\andre\Desktop\BarioGame\src\Turtle.cpp(100,13): warning C4244:         ]
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(171): warning C4715: Player::checkFights: значение возвращается не при всех путях выполнения
+C:\Users\andre\Desktop\BarioGame\src\Player.cpp(137): warning C4715: Player::checkFights: значение возвращается не при всех путях выполнения
   Bario.vcxproj -> C:\Users\andre\Desktop\BarioGame\Debug\Bario.exe

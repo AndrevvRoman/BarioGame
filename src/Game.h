@@ -1,28 +1,28 @@
 #pragma once
 #include "Player.h"
-#include "IEnemy.h"
 #include "IBonus.h"
-#include "IBoss.h"
+#include "FactoryBonus.h"
 #include "GUI.h"
-#include <list>
+#include "FactoryEnemy.h"
+
 class Game : public GUI
 {
 public:
 	Game();
-	Player pl;
-	uint16_t score = 0;
-	std::vector<IEnemy*> enemies;
-	std::vector<IBonus*> bonuses;
-	IBoss * boss = nullptr;
-	IMap * map = nullptr;
-	sf::Texture backGroundTexture;
-	sf::Sprite backGroundSprite;
-	sf::Clock clock;
-	double time = 0;
-	sf::RenderWindow window;
 	void start();
 	~Game();
 private:
+	Player pl;
+	uint16_t score = 0;
+	IBoss* boss = nullptr;
+	IMap* map = nullptr;
+	sf::Texture backGroundTexture;
+	sf::Sprite backGroundSprite;
+	sf::Clock clock;
+	sf::Clock nextLevelTimer;
+	double time = 0;
+	sf::RenderWindow window;
+
 	bool updatePlayer();
 	void updateEnemies();
 	void updateBonuses();

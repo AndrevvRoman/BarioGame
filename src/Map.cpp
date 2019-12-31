@@ -15,13 +15,8 @@ bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 
 	if (pl.getRect().top > window.getSize().x / 2) ofsetY = temp.top - static_cast<double>(window.getSize().x / 3);
 	if (pl.getRect().left > window.getSize().y / 2) ofsetX = temp.left - static_cast<double>(window.getSize().y / 2);
-	if (temp.left > 2000000)
+	if (temp.left > 2000 )
 	{
-		temp.left = 50;
-		temp.top = 50;
-		ofsetX = 0;
-		ofsetY = 0;
-		generate();
 		result = true;
 	}
 	pl.setRect(temp);
@@ -119,5 +114,12 @@ double Map::getOfSetY()
 sf::Vector2f Map::getEdgeCoords()
 {
 	return sf::Vector2f(W * sb, H * sb);
+}
+
+void Map::generateMap()
+{
+	ofsetX = 0;
+	ofsetY = 0;
+	generate();
 }
 

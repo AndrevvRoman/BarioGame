@@ -1,4 +1,7 @@
 Debug/
+Debug/*
+Release/*
+Release/
 .vs/Bario/v16/.suo
 *.db
 *.ipch

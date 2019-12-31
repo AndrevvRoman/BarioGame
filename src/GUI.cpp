@@ -93,6 +93,7 @@ uint16_t GUI::getHighScore()
 
 void GUI::setHighScore(uint16_t curScore)
 {
+
 	std::ifstream in("C:\\Users\\Public\\Documents\\save.txt");
 	if (!in.is_open())
 	{

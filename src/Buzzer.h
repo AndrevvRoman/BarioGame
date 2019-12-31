@@ -13,7 +13,8 @@ public:
 	void setCoords(double x, double y) override;
 	~Buzzer() = default;
 private:
-	uint16_t HP = 10;
+	bool spotted = false;
+	uint16_t HP = 1;
 	bool dir = false;
 	void kill();
 };

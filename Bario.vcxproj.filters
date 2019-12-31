@@ -48,7 +48,10 @@
     <ClCompile Include="src\Buzzer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\IMap.cpp">
+    <ClCompile Include="src\FactoryEnemy.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactoryBonus.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,6 +96,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="src\IBoss.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FactoryEnemy.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FactoryBonus.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

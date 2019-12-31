@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Game.h"
 #include "Map.h"
-#include "Turtle.h"
 #include "Mushroom.h"
 #include "Buzzer.h"
 #include <ctime>
@@ -16,23 +15,23 @@ Game::Game()
 	{
 		exit(EXIT_SUCCESS);
 	}
-
+	clock.restart();
 	map = new Map;
 	srand(std::time(NULL));
-	enemies.resize(rand() % 5 + 1);
-	for (size_t i = 0; i < enemies.size(); i++)
+	size_t N = rand() % 5 + 1;
+	for (size_t i = 0; i < N; i++)
 	{
-		enemies[i] = new Turtle;
+		FactoryEnemy::createTurtle();
 	}
 
-	bonuses.resize(rand() % 2 + 1);
-	for (size_t i = 0; i < bonuses.size(); i++)
+	N = rand() % 2 + 1;
+	for (size_t i = 0; i < N; i++)
 	{
-		bonuses[i] = new Mushroom;
+		FactoryBonus::createMushroom();
 	}
 
 	boss = new Buzzer;
-	boss->setCoords(map->getEdgeCoords().x - 300, map->getEdgeCoords().y - 100);
+	boss->setCoords(static_cast<double>(map->getEdgeCoords().x) - 300, static_cast<double>(map->getEdgeCoords().y) - 100);
 
 }
 
@@ -45,13 +44,12 @@ void Game::start()
 		{
 			if (!menu())
 			{
-				exit(EXIT_SUCCESS);
-				
+				setHighScore(score);
+				exit(EXIT_SUCCESS);	
 			}
 			
 		}
 		
-		//clock.restart();
 		window.clear();
 		window.draw(backGroundSprite);
 
@@ -59,7 +57,10 @@ void Game::start()
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
+			{
+				setHighScore(score);
 				window.close();
+			}
 		}
 		time = clock.getElapsedTime().asMicroseconds();
 		clock.restart();
@@ -72,7 +73,6 @@ void Game::start()
 		checkBonuses();
 		updateMap();
 		updateGUI(window, pl.getHealth(), score);
-		
 		window.display();
 
 	}
@@ -82,7 +82,6 @@ bool Game::updatePlayer()
 {
 	if (pl.update(time, window, map))
 	{
-		
 		setHighScore(score);
 		return true;
 	}
@@ -91,30 +90,33 @@ bool Game::updatePlayer()
 
 void Game::updateEnemies()
 {
-	for (size_t i = 0; i < enemies.size(); i++)
+	for (size_t i = 0; i < FactoryEnemy::getSize(); i++)
 	{
-		if (enemies[i]->update(time, window, map))
+		if (FactoryEnemy::getEnemy(i)->update(time, window, map))
 		{
 			score += 100;
-			enemies.erase(enemies.begin() + i);
+			FactoryEnemy::destroyEnemy(i);
+			//enemies.erase(enemies.begin() + i);
 			std::cout << "deleted\n";
 		}
 	}
-	if (boss->update(time, window, map))
+	if ( boss != nullptr && boss->update(time, window, map))
 	{
+		nextLevelTimer.restart();
+		nextLevelTimer.getElapsedTime();
 		score += 1000;
 		delete boss;
+		boss = nullptr;
 	}
 }
 
 void Game::updateBonuses()
 {
-	for (size_t i = 0; i < bonuses.size(); i++)
+	for (size_t i = 0; i < FactoryBonus::getSize(); i++)
 	{
-		
-		if (!bonuses[i]->update(time, window, map))
+		if (!FactoryBonus::getBonus(i)->update(time, window, map))
 		{
-			bonuses.erase(bonuses.begin() + i);
+			FactoryBonus::destroyBonus(i);
 		}
 	}
 }
@@ -123,9 +125,9 @@ void Game::checkBonuses()
 {
 	if (pl.getStatus())
 	{
-		for (size_t i = 0; i < bonuses.size(); i++)
+		for (size_t i = 0; i < FactoryBonus::getSize(); i++)
 		{
-			pl.checkBonus(*bonuses[i]);
+			pl.checkBonus(*FactoryBonus::getBonus(i));
 		}
 	}
 }
@@ -134,9 +136,12 @@ void Game::checkFights()
 {
 	if (pl.getStatus())
 	{
-		for (int i = 0; i < enemies.size(); i++)
-			pl.checkFights(*enemies[i]);
-		pl.checkFights(*boss);
+		for (size_t i = 0; i < FactoryEnemy::getSize(); i++)
+			pl.checkFights(*FactoryEnemy::getEnemy(i));
+		if (boss != nullptr)
+		{
+			pl.checkFights(*boss);
+		}
 	}
 }
 
@@ -144,24 +149,29 @@ void Game::checkFights()
 
 void Game::updateMap()
 {
-	if (map->update(window, pl))
+	if (map->update(window, pl) && boss == nullptr && nextLevelTimer.getElapsedTime().asSeconds() > 10)
 	{
-		enemies.resize(0);
-		enemies.resize(rand() % 5 + 1);
 
-		bonuses.resize(0);
-		bonuses.resize(rand() % 2 + 1);
+		FactoryEnemy::destroyAllEnemies();
+		size_t N = rand() % 5 + 1;
 
-		for (size_t i = 0; i < enemies.size(); i++)
+		FactoryBonus::destroyAllBonuses();
+
+		for (size_t i = 0; i < N; i++)
 		{
-			enemies[i] = new Turtle;
+			FactoryEnemy::createTurtle();
 		}
 
-		for (size_t i = 0; i < bonuses.size(); i++)
+		N = rand() % 2 + 1;
+		for (size_t i = 0; i < N; i++)
 		{
-			bonuses[i] = new Mushroom;
+			FactoryBonus::createMushroom();
 		}
 
+		boss = new Buzzer;
+		boss->setCoords(static_cast<double>(map->getEdgeCoords().x) - 300, static_cast<double>(map->getEdgeCoords().y) - 100);
+		pl.setRect(50,50);
+		map->generateMap();
 	}
 }
 
@@ -217,13 +227,9 @@ bool Game::menu()
 
 Game::~Game()
 {
-	for (size_t i = 0; i < enemies.size(); i++)
-	{
-		delete enemies[i];
-	}
-	for (size_t i = 0; i < bonuses.size(); i++)
-	{
-		delete bonuses[i];
-	}
+	FactoryEnemy::destroyAllEnemies();
+	FactoryBonus::destroyAllBonuses();
+	if (boss != nullptr)
+		delete boss;
 	delete map;
 }

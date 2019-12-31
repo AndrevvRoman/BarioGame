@@ -14,6 +14,7 @@ public:
 	double getOfSetX() override;
 	double getOfSetY() override;
 	sf::Vector2f getEdgeCoords() override;
+	void generateMap() override;
 	~Map() = default;
 };
 

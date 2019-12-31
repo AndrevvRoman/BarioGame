@@ -116,7 +116,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>C:\libs\SFML-2.5.1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-window-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-audio-s.lib;sfml-graphics-s.lib;ws2_32.lib;kernel32.lib;user32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -141,9 +141,10 @@
   <ItemGroup>
     <ClCompile Include="src\BaseUnit.cpp" />
     <ClCompile Include="src\Buzzer.cpp" />
+    <ClCompile Include="src\FactoryBonus.cpp" />
+    <ClCompile Include="src\FactoryEnemy.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GUI.cpp" />
-    <ClCompile Include="src\IMap.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map.cpp" />
     <ClCompile Include="src\MapGenerator.cpp" />
@@ -155,6 +156,8 @@
   <ItemGroup>
     <ClInclude Include="src\BaseUnit.h" />
     <ClInclude Include="src\Buzzer.h" />
+    <ClInclude Include="src\FactoryBonus.h" />
+    <ClInclude Include="src\FactoryEnemy.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GUI.h" />
     <ClInclude Include="src\IBonus.h" />
