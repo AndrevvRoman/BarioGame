@@ -1,9 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "Game.h"
+#include <windows.h>
 
 int main()
 {
+	FreeConsole();
 	Game * game = nullptr;
 	while (true)
 	{

@@ -14,7 +14,7 @@ public:
 	~Buzzer() = default;
 private:
 	bool spotted = false;
-	uint16_t HP = 1;
+	uint16_t HP = 5;
 	bool dir = false;
 	void kill();
 };
