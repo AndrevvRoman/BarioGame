@@ -1,5 +1,0 @@
-﻿  GUI.cpp
-C:\Users\andre\Desktop\BarioGame\src\GUI.cpp(52,136): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\Users\andre\Desktop\BarioGame\src\GUI.cpp(62,75): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-C:\Users\andre\Desktop\BarioGame\src\GUI.cpp(69,110): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-  Bario.vcxproj -> C:\Users\andre\Desktop\BarioGame\Debug\Bario.exe
