@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.0)
 #how the project will be called
 project (Bario)
 
-set (CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_STANDARD 11)
 set (EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build)
 
 #set source files
@@ -19,8 +19,7 @@ set(SOURCES
 	src/main.cpp                                                                                                                
 	src/Map.cpp                                                                                                                 
 	src/MapGenerator.cpp                                                                                                        
-	src/Mushroom.cpp                                                                                                            
-	src/old_Source.cpp                                                                                                          
+	src/Mushroom.cpp                                                                                                                                                                                                                   
 	src/Player.cpp                                                                                                              
 	src/Sound.cpp                                                                                                               
 	src/Turtle.cpp
@@ -44,11 +43,21 @@ set(HEADERS
 	src/Turtle.h 
 )
 
+if (WIN32)
+	include_directories(external/win32/include)
+	link_directories(external/win32/lib/cmake/SFML)
+	link_directories(external/win32/lib)
+elseif (UNIX)
+	include_directories(external/linux64/include)
+	link_directories(external/linux64/lib/cmake/SFML)
+	link_directories(external/linux64/lib)
+else ()
+	message (FATAL_ERROR "Неизвестная система")
+endif ()
 
-include_directories(external/include)
-link_directories(external/lib)
 
-add_definitions(-DSFML_STATIC)
+#add_definitions(-DSFML_STATIC)
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 
-target_link_libraries(Bario sfml-graphics-s sfml-window-s sfml-system-s opengl32 freetype winmm gdi32)
+#target_link_libraries(Bario sfml-graphics-s sfml-window-s sfml-system-s opengl32 freetype winmm gdi32)
+target_link_libraries(Bario sfml-graphics sfml-window sfml-system sfml-audio)
