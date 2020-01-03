@@ -63,6 +63,8 @@ if (WIN32)
 								)
 				
 elseif (UNIX)
+	add_definitions(-DSFML_STATIC)
+	add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 	find_package(SFML 2 REQUIRED audio graphics window system)
 	if(SFML_FOUND)
   		include_directories(${SFML_INCLUDE_DIR})
