@@ -51,13 +51,15 @@ elseif (UNIX)
 	include_directories(external/linux64/include)
 	link_directories(external/linux64/lib/cmake/SFML)
 	link_directories(external/linux64/lib)
-else ()
-	message (FATAL_ERROR "Неизвестная система")
 endif ()
 
 
-#add_definitions(-DSFML_STATIC)
+add_definitions(-DSFML_STATIC)
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 
-#target_link_libraries(Bario sfml-graphics-s sfml-window-s sfml-system-s opengl32 freetype winmm gdi32)
-target_link_libraries(Bario sfml-graphics sfml-window sfml-system sfml-audio)
+target_link_libraries(Bario sfml-graphics-s sfml-window-s sfml-system-s sfml-audio-s 
+opengl32 freetype 
+winmm 
+gdi32 
+openal32.lib flac.lib vorbisenc.lib vorbisfile.lib vorbis.lib ogg.lib)
+#target_link_libraries(Bario sfml-graphics sfml-window sfml-system sfml-audio)
