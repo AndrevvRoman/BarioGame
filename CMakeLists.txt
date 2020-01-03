@@ -8,15 +8,6 @@ set (CMAKE_CXX_STANDARD 11)
 set (EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build)
 
 #set source files
-
-set(myproject_VERSION_MAJOR 1)
-set(myproject_VERSION_MINOR 0)
-#configure_file(
-# "${PROJECT_SOURCE_DIR}/config.h.in"
-#  "${PROJECT_BINARY_DIR}/config.h"
-#  )
-include_directories("${PROJECT_BINARY_DIR}")
-
 set(SOURCES 
 	src/BaseUnit.cpp                                                                                                            
 	src/Buzzer.cpp                                                                                                              
@@ -52,29 +43,31 @@ set(HEADERS
 )
 
 
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+#set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 if (WIN32)
-	include_directories(external/win32/include)
-	link_directories(external/win32/lib/cmake/SFML)
-	link_directories(external/win32/lib)
+	include_directories(${CMAKE_SOURCE_DIR}/external/win32/include)
+	link_directories(${CMAKE_SOURCE_DIR}/external/win32/lib/cmake/SFML)
+	link_directories(${CMAKE_SOURCE_DIR}/external/win32/lib)
+	add_definitions(-DSFML_STATIC)
+	add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
+	target_link_libraries(Bario 
+								sfml-window-s
+								sfml-graphics-s
+								sfml-system-s
+								sfml-audio-s
+								opengl32.lib freetype 
+								winmm.lib 
+								gdi32
+								openal32.lib flac.lib vorbisenc.lib vorbisfile.lib vorbis.lib ogg.lib
+								)
+				
 elseif (UNIX)
 	find_package(SFML 2 REQUIRED audio graphics window system)
 	if(SFML_FOUND)
-  		add_definitions(-DSFML_STATIC)
   		include_directories(${SFML_INCLUDE_DIR})
   		target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 	endif()
 endif ()
 
 
-INSTALL(DIRECTORY ${PROJECT_SOURCE_DIR}/res DESTINATION ${EXECUTABLE_OUTPUT_PATH})
-
-#install(TARGETS ${EXECUTABLE_NAME} DESTINATION build)
-
-#include(InstallRequiredSystemLibraries)
-#set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/COPYING")
-#set(CPACK_PACKAGE_VERSION_MAJOR "${Bario_VERSION_MAJOR}")
-#set(CPACK_PACKAGE_VERSION_MINOR "${Bario_VERSION_MINOR}")
-#include(CPack)
