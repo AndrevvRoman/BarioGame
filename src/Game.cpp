@@ -208,7 +208,7 @@ bool Game::menu()
 			animTimer.restart();
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::Enter) && (animTimer.getElapsedTime().asMilliseconds() > 300))
+		if (Keyboard::isKeyPressed(Keyboard::Space) && (animTimer.getElapsedTime().asMilliseconds() > 300))
 		{
 			if (choose == 0)
 				return true;

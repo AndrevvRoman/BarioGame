@@ -1,3 +1,0 @@
-/home/andrey/BarioGame/build/CMakeFiles/rebuild_cache.dir
-/home/andrey/BarioGame/build/CMakeFiles/Bario.dir
-/home/andrey/BarioGame/build/CMakeFiles/edit_cache.dir

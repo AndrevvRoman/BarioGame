@@ -9,6 +9,14 @@ set (EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build)
 
 #set source files
 
+set(myproject_VERSION_MAJOR 1)
+set(myproject_VERSION_MINOR 0)
+#configure_file(
+# "${PROJECT_SOURCE_DIR}/config.h.in"
+#  "${PROJECT_BINARY_DIR}/config.h"
+#  )
+include_directories("${PROJECT_BINARY_DIR}")
+
 set(SOURCES 
 	src/BaseUnit.cpp                                                                                                            
 	src/Buzzer.cpp                                                                                                              
@@ -43,21 +51,30 @@ set(HEADERS
 	src/Turtle.h 
 )
 
+
+add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+
 if (WIN32)
 	include_directories(external/win32/include)
 	link_directories(external/win32/lib/cmake/SFML)
 	link_directories(external/win32/lib)
 elseif (UNIX)
-	include_directories(external/linux64/include)
-	link_directories(external/linux64/lib/cmake/SFML)
-	link_directories(external/linux64/lib)
-else ()
-	message (FATAL_ERROR "Неизвестная система")
+	find_package(SFML 2 REQUIRED audio graphics window system)
+	if(SFML_FOUND)
+  		add_definitions(-DSFML_STATIC)
+  		include_directories(${SFML_INCLUDE_DIR})
+  		target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+	endif()
 endif ()
 
 
-#add_definitions(-DSFML_STATIC)
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
+INSTALL(DIRECTORY ${PROJECT_SOURCE_DIR}/res DESTINATION ${EXECUTABLE_OUTPUT_PATH})
 
-#target_link_libraries(Bario sfml-graphics-s sfml-window-s sfml-system-s opengl32 freetype winmm gdi32)
-target_link_libraries(Bario sfml-graphics sfml-window sfml-system sfml-audio)
+#install(TARGETS ${EXECUTABLE_NAME} DESTINATION build)
+
+#include(InstallRequiredSystemLibraries)
+#set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/COPYING")
+#set(CPACK_PACKAGE_VERSION_MAJOR "${Bario_VERSION_MAJOR}")
+#set(CPACK_PACKAGE_VERSION_MINOR "${Bario_VERSION_MINOR}")
+#include(CPack)
