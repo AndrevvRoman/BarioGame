@@ -189,6 +189,11 @@ uint16_t Player::getHealth()
 	return HP;
 }
 
+uint16_t Player::getBonus()
+{
+	return bonusMask;
+}
+
 bool Player::getStatus()
 {
 	return alive;

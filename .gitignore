@@ -21,3 +21,5 @@ build/*
 *.log
 *.pdb
 *.obj
+build/CMakeCache.txt
+build/CMakeCache.txt

@@ -19,6 +19,7 @@ public:
 	bool checkBonus(IBonus& bonus);
 	void getDamage();
 	uint16_t getHealth(); 
+	uint16_t getBonus();
 	bool getStatus();
 private:
 	void kill();

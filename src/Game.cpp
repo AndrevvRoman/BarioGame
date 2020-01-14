@@ -72,7 +72,7 @@ void Game::start()
 		checkFights();
 		checkBonuses();
 		updateMap();
-		updateGUI(window, pl.getHealth(), score);
+		updateGUI(window, pl.getHealth(), score,pl.getBonus());
 		window.display();
 
 	}
