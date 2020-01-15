@@ -175,6 +175,12 @@ bool Player::checkBonus(IBonus& bonus)
 	if (rect.intersects(bonus.getRect()))
 	{
 		bonusMask = bonusMask | bonus.getBonus();
+		if (bonusMask & BonusFilter::hp)
+		{
+			std::cout << "here\n";
+			HP++;
+			bonusMask ^= BonusFilter::hp;
+		}
 	}
 	return true;
 }

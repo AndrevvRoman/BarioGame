@@ -24,11 +24,7 @@ Game::Game()
 		FactoryEnemy::createTurtle();
 	}
 
-	N = rand() % 2 + 1;
-	for (size_t i = 0; i < N; i++)
-	{
-		FactoryBonus::createMushroom();
-	}
+	FactoryBonus::createBonus();
 
 	boss = new Buzzer;
 	boss->setCoords(static_cast<double>(map->getEdgeCoords().x) - 300, static_cast<double>(map->getEdgeCoords().y) - 100);
@@ -162,11 +158,7 @@ void Game::updateMap()
 			FactoryEnemy::createTurtle();
 		}
 
-		N = rand() % 2 + 1;
-		for (size_t i = 0; i < N; i++)
-		{
-			FactoryBonus::createMushroom();
-		}
+		FactoryBonus::createBonus();
 
 		boss = new Buzzer;
 		boss->setCoords(static_cast<double>(map->getEdgeCoords().x) - 300, static_cast<double>(map->getEdgeCoords().y) - 100);
