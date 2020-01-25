@@ -21,9 +21,11 @@ public:
 	uint16_t getHealth(); 
 	uint16_t getBonus();
 	bool getStatus();
+	uint16_t HP = 3;
 private:
 	void kill();
-	uint16_t HP = 3;
+	
 	sf::Clock deathTimer;
+	sf::Clock speedTimer;
 };
 

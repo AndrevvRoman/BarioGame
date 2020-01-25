@@ -30,5 +30,6 @@ private:
 	void checkFights();
 	void updateMap();
 	bool menu();
+	void resetGame();
 	
 };

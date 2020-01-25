@@ -19,6 +19,7 @@ Player::Player()
 	loadSound(jump, "res/jump.wav");
 	loadSound(hit, "res/hit.wav");
 	loadSound(damage, "res/damage.wav");
+	loadSound(speedup, "res/speedup.wav");
 }
 
 bool Player::update(double time, sf::RenderWindow& window, IMap* map)
@@ -36,44 +37,37 @@ bool Player::update(double time, sf::RenderWindow& window, IMap* map)
 	}
 	if (alive)
 	{
-	if (Keyboard::isKeyPressed(Keyboard::Left))
-	{
-		if (bonusMask & BonusFilter::speed)
+		if (Keyboard::isKeyPressed(Keyboard::Left))
 		{
-			dx = -speed * 1.2;
-		}
-		else
-		{
-			dx = -speed;
-		}
-	}
 
-	if (Keyboard::isKeyPressed(Keyboard::Right))
-	{
-		if (bonusMask & BonusFilter::speed)
-		{
-			dx = speed * 1.2;
+			dx = -speed;
+
 		}
-		else
+
+		if (Keyboard::isKeyPressed(Keyboard::Right))
 		{
 			dx = speed;
 		}
-	}
-	if (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::Space))
-	{
-		if (onGround)
-		{ 
-			std::cout << "x = " << rect.left << " y = " << rect.top << std::endl;
-			playSound(jump);
-			dy = -0.30;
-			onGround = false;
+		if (Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::Space))
+		{
+			if (onGround)
+			{
+				std::cout << "x = " << rect.left << " y = " << rect.top << std::endl;
+				playSound(jump);
+				dy = -0.30;
+				onGround = false;
+			}
 		}
-	}
-	
+
 	}
 	if (damageTimer.getElapsedTime().asMilliseconds() > 500)
 	{
 		damaged = false;
+	}
+	if ((speedTimer.getElapsedTime().asSeconds() > 3) && (bonusMask & BonusFilter::speed))
+	{
+		bonusMask = bonusMask ^ BonusFilter::speed;
+		this->speed = 0.1;
 	}
 
 	rect.left += dx * time;
@@ -102,9 +96,9 @@ bool Player::update(double time, sf::RenderWindow& window, IMap* map)
 	return result;
 }
 
-bool Player::checkFights(IEnemy & en)
+bool Player::checkFights(IEnemy& en)
 {
-	
+
 	if (rect.intersects(en.getRect()) && en.getStatus() && !damaged)
 	{
 		damaged = true;
@@ -122,14 +116,6 @@ bool Player::checkFights(IEnemy & en)
 			HP--;
 			playSound(damage);
 			dy -= 0.3;
-			/*if (en.getRect().left < rect.left)
-			{
-				dx += 7;
-			}
-			else
-			{
-				dx -= 7;
-			}*/
 			return false;
 		}
 	}
@@ -156,14 +142,6 @@ bool Player::checkFights(IBoss& en)
 			HP--;
 			playSound(damage);
 			dy -= 0.3;
-			/*if (en.getRect().left < rect.left)
-			{
-				dx += 7;
-			}
-			else
-			{
-				dx -= 7;
-			}*/
 			return false;
 		}
 	}
@@ -174,12 +152,24 @@ bool Player::checkBonus(IBonus& bonus)
 {
 	if (rect.intersects(bonus.getRect()))
 	{
-		bonusMask = bonusMask | bonus.getBonus();
+		bonusMask = bonusMask | bonus.peekBonus();
 		if (bonusMask & BonusFilter::hp)
 		{
-			std::cout << "here\n";
 			HP++;
+			bonus.getBonus();
 			bonusMask ^= BonusFilter::hp;
+		}
+		if (bonusMask & BonusFilter::speed)
+		{
+			if (speed != 0.15)
+			{
+				speedTimer.restart();
+				speedTimer.getElapsedTime();
+				speed = 0.15;
+				bonus.getBonus();
+				playSound(speedup);
+			}
+			// bonusMask ^= BonusFilter::speed;
 		}
 	}
 	return true;
@@ -207,7 +197,7 @@ bool Player::getStatus()
 
 void Player::kill()
 {
-	
+
 	sprite.setTextureRect(IntRect(0, 0, textLenght, textHeight));
 	if (exist)
 	{

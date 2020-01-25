@@ -43,7 +43,7 @@ void Game::start()
 				setHighScore(score);
 				exit(EXIT_SUCCESS);	
 			}
-			
+			clock.restart();
 		}
 		
 		window.clear();
@@ -215,6 +215,28 @@ bool Game::menu()
 
 	}
 	return false;
+}
+
+void Game::resetGame()
+{
+	FactoryEnemy::destroyAllEnemies();
+	size_t N = rand() % 5 + 1;
+
+	FactoryBonus::destroyAllBonuses();
+
+	for (size_t i = 0; i < N; i++)
+	{
+		FactoryEnemy::createTurtle();
+	}
+
+	FactoryBonus::createBonus();
+
+	boss = new Buzzer;
+	boss->setCoords(static_cast<double>(map->getEdgeCoords().x) - 300, static_cast<double>(map->getEdgeCoords().y) - 100);
+	pl.setRect(50, 50);
+	map->generateMap();
+	score = 0;
+	pl.HP = 3;
 }
 
 Game::~Game()

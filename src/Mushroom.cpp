@@ -52,6 +52,11 @@ bool Mushroom::getStatus()
 	return alive;
 }
 
+uint16_t Mushroom::peekBonus()
+{
+	return BonusFilter::speed;
+}
+
 sf::FloatRect Mushroom::getRect()
 {
 	return rect;

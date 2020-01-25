@@ -15,7 +15,7 @@ bool Map::update(sf::RenderWindow& window, BaseUnit& pl)
 
 	if (pl.getRect().top > window.getSize().x / 2) ofsetY = temp.top - static_cast<double>(window.getSize().x / 3);
 	if (pl.getRect().left > window.getSize().y / 2) ofsetX = temp.left - static_cast<double>(window.getSize().y / 2);
-	if (temp.left > 2000 )
+	if (temp.left > 2000)
 	{
 		result = true;
 	}
@@ -61,6 +61,17 @@ bool Map::collisionX(BaseUnit& unit)
 			}
 		}
 	}
+	if (rect.left < 10)
+	{
+		rect.left = 50;
+		unit.setRect(rect);
+	}
+	if (rect.left > W* sb)
+	{
+		rect.left = W*sb - 50;
+		unit.setRect(rect);
+	}
+
 	
 	return collised;
 }

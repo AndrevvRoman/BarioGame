@@ -55,3 +55,8 @@ bool Flower::update(double time, sf::RenderWindow& window, IMap* map)
 	}
 	return alive;
 }
+
+uint16_t Flower::peekBonus()
+{
+	return hp;
+}

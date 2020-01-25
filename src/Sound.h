@@ -9,6 +9,7 @@ public:
 		jump = 0,
 		hit = 1,
 		damage = 2,
+		speedup = 3,
 	};
 	std::vector<sf::SoundBuffer> buffer;
 	sf::Sound sound;
