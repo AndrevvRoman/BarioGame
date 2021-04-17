@@ -2,6 +2,9 @@ Debug/
 Debug/*
 Release/*
 Release/
+build/
+*build*/*
+build/*
 .vs/Bario/v16/.suo
 *.db
 *.ipch
@@ -18,3 +21,5 @@ Release/
 *.log
 *.pdb
 *.obj
+build/CMakeCache.txt
+build/CMakeCache.txt

@@ -1,4 +1,4 @@
-float ofsetX = 0, ofsetY = 0;
+/*float ofsetX = 0, ofsetY = 0;
 int ground = 650;
 const int W = 73, H = 18, sb = 20;
 String map[] =
@@ -264,3 +264,4 @@ int main()
 		window.display();
 	}
 }
+*/

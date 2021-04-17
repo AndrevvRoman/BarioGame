@@ -14,6 +14,7 @@ public:
 	virtual bool getStatus() = 0;
 	virtual sf::FloatRect getRect() = 0;
 	virtual bool update(double time, sf::RenderWindow& window, IMap* map) = 0;
+	virtual uint16_t peekBonus() = 0;
 	~IBonus() = default;
 };
 

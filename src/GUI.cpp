@@ -1,6 +1,8 @@
 #include "GUI.h"
 #include <iostream>
 #include <fstream>
+#include "IBonus.h"
+
 GUI::GUI()
 {
 	font.loadFromFile("res/font.ttf");
@@ -26,9 +28,16 @@ GUI::GUI()
 	healthCount.setFont(font);
 	healthCount.setFillColor(sf::Color::Black);
 	healthCount.setCharacterSize(40);
+
+	speedUpText.setPosition(sf::Vector2f(350, 10));
+	speedUpText.setFont(font);
+	speedUpText.setFillColor(sf::Color::Black);
+	speedUpText.setCharacterSize(42);
+	speedUpText.setString("speed up!");
+
 }
 
-void GUI::updateGUI(sf::RenderWindow& window, uint16_t hp, uint16_t score)
+void GUI::updateGUI(sf::RenderWindow& window, uint16_t hp, uint16_t score,uint16_t bonusMask)
 {
 	window.draw(healthText);
 	window.draw(scoreText);
@@ -38,6 +47,10 @@ void GUI::updateGUI(sf::RenderWindow& window, uint16_t hp, uint16_t score)
 	auto s2 = std::to_string(score);
 	scoreCount.setString(s2);
 	window.draw(scoreCount);
+	if (bonusMask && BonusFilter::speed)
+	{
+		window.draw(speedUpText);
+	}
 }
 
 void GUI::setMenu(sf::RenderWindow& window)
